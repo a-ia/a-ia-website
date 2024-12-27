@@ -1,0 +1,484 @@
+:root {
+  /* Base colors */
+  --color-white: #fff;
+  --color-pink: pink;
+  
+  /* Gradient colors */
+  --color-pink-gradient: #e297b2;
+  --color-purple-gradient: #c0b4d5;
+  --color-blue-gradient: #9acde2;
+  --color-green-accent: #CAD6B6;
+  
+  /* Text shadow colors */
+  --color-purple-glow: #dbbdf9;
+  
+  /* Rainbow colors */
+  --color-red: #ff0000;
+  --color-orange: #ff8800;
+  --color-yellow: #ffff00;
+  --color-green: #00ff00;
+  --color-cyan: #00ffff;
+  --color-blue: #0000ff;
+  --color-magenta: #ff00ff;
+  
+  /* Common gradient */
+  --gradient-main: linear-gradient(45deg, var(--color-pink-gradient), var(--color-purple-gradient), var(--color-blue-gradient));
+}
+
+/* ======================================== */
+/* ========= Base and Grid Styles ========= */
+/* ======================================== */
+
+/* @font-face {
+    font-family: 'boop';
+    src: url('fonts/boop-boop.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+body, html {
+  margin: 0;
+  color: var(--color-white);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  max-width: 800px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+  gap: 10px;
+  grid-template-areas:
+    "Title Title Title"
+    "left-sidebar main-body right-sidebar"
+    "footer footer footer";
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto auto;
+    grid-template-areas:
+      "Title"
+      "main-body"
+      "left-sidebar"
+      "right-sidebar"
+      "footer";
+  }
+}
+
+
+.Title, .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.Title { 
+  grid-area: Title;
+  text-align: center;
+  width: 100%;
+  text-shadow: var(--color-purple-glow) 0px 0px 8px;
+}
+
+/* ========================================= */
+/* ========== Left Sidebar Styles ========== */
+/* ========================================= */
+
+.left-sidebar-title {
+  grid-area: left-sidebar-title;
+  display: flex;
+  align-items: center; 
+  justify-content: end; /* Align content to the left */
+  width: 100%; /* Ensure it spans full width of its container */
+  height: auto; /* Adjust height as needed */
+  text-shadow: var(--color-purple-glow) 0px 0px 8px;
+}
+
+.left-sidebar-title img {
+  margin: 0px 5px;
+  font-size: clamp(12px, 2.5vw, auto);
+  max-width: 35px;
+  vertical-align: middle;
+}
+
+.left-sidebar-title h1 {
+  margin: 0; /* Remove margin from the title */
+  text-align: left; /* Align text to the left */
+}
+
+.left-sidebar { 
+  grid-area: left-sidebar;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+  display: flex;
+  align-items: flex-start; /* Ensure items are aligned at the start (left) */
+  justify-content: flex-start; /* Align child elements to the left */
+  flex-direction: column; /* Stack items vertically */
+  width: fit-content;
+}
+
+.left-about {
+  display: grid;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  grid-template-areas:
+    "left-sidebar-title left-sidebar-title"
+    "avatar row-1";
+  justify-items: end; /* Ensure all items align to the left */
+  align-items: start; /* Align items to the top */
+}
+
+.avatar {
+  grid-area: avatar;
+  border-style: solid;
+  border-width: 1px;
+  color: var(--color-white);
+  max-height: 70px;
+  max-width: 70px;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+}
+
+.avatar img {
+  max-width: 70px;
+  max-height: 70px;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+}
+
+.row-1 {
+  grid-area: row-1;
+}
+
+.row-1 { 
+  line-height: 1.5;
+  text-align: left; /* Ensure text is left-aligned */
+  width: 100%; 
+  max-height: 70px; 
+  font-size: clamp(0.6rem, 0.4vw, 2rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  white-space: nowrap;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+}
+
+.mew { 
+  height: auto; 
+  vertical-align: middle; 
+}
+
+hr {
+  color: var(--color-pink);
+  border-top: 1px dashed var(--color-white);
+}
+
+.online-content { 
+  display: flex; 
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+} 
+
+/* ========================================== */
+/* ========== Right Sidebar Styles ========== */
+/* ========================================== */
+
+
+.right-nav {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "right-sidebar-title"
+    "starred";
+  justify-items: start; 
+  align-items: start;
+}
+
+.right-sidebar { 
+  grid-area: right-sidebar;
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+  display: flex;
+  align-items: flex-start; /* Ensure items are aligned at the start (left) */
+  justify-content: flex-start; /* Align child elements to the left */
+  flex-direction: column; /* Stack items vertically */
+}
+
+
+.starred {
+  grid-area: starred;
+  height: 100%;
+}
+
+
+.right-sidebar-title {
+  grid-area: right-sidebar-title;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+  width: 100%; /* Ensure it spans full width of its container */
+  height: auto; /* Adjust height as needed */
+  text-shadow: var(--color-purple-glow) 0px 0px 8px;
+}
+
+.right-sidebar-title img {
+  margin: 0px 5px;
+  font-size: clamp(12px, 2.5vw, auto);
+  max-width: 35px;
+  vertical-align: middle;
+}
+
+.right-sidebar-title h1 {
+  margin: 0; /* Remove margin from the title */
+  text-align: left; /* Align text to the left */
+}
+
+
+
+/* ========================================== */
+/* ============ Main Body Styles ============ */
+/* ========================================== */
+
+.main-body { 
+  grid-area: main-body;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  color: var(--color-white);
+}
+
+
+.center-title {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Align content to the left */
+  width: 100%; /* Ensure it spans full width of its container */
+  margin: 0;
+  white-space: nowrap;
+  text-shadow: var(--color-purple-glow) 0px 0px 8px;
+}
+
+.center-title h1 {
+  width: 100%;
+  text-align: left;
+  font-size: 1.2em; 
+}
+
+.main-body .main-header h1 {
+  font-size: 1.2em;
+  text-shadow: var(--color-white) 0px 0px 1px;
+  margin: 0;
+  white-space: nowrap;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  width: 100%;
+}
+
+.main-body .main-header {
+  position: relative;
+  padding: 5px;
+  background: var(--gradient-main);
+  background-clip: padding-box;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+
+/* ========================================= */
+/* ============= Footer Styles ============= */
+/* ========================================= */
+
+.footer { 
+  grid-area: footer;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  grid-template-areas:
+    "links public-projects"
+    "credits credits";
+}
+
+.links, .public-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Blinking Animation */
+.blink {
+  animation: blink-animation 1s infinite;
+}
+
+@keyframes blink-animation {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* List and Bullet Styles */
+.bullet-wrapper {
+  display: inline-block;
+}
+
+#custom-list { 
+  text-align: left;
+  white-space: nowrap;
+  margin: 0; /* Remove extra margin */
+  padding: 0; /* Remove padding around the list */
+}
+
+#custom-list li {
+  margin: 0; /* Remove extra space between list items */
+  padding: 0; /* Keep spacing tight */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+  font: inherit;
+}
+
+/* Rainbow Glow Effect */
+@keyframes rainbow-shadow {
+  0% { text-shadow: var(--color-red) 0px 0px 8px; }
+  14% { text-shadow: var(--color-orange) 0px 0px 8px; }
+  32% { text-shadow: var(--color-yellow) 0px 0px 8px; }
+  48% { text-shadow: var(--color-green) 0px 0px 8px; }
+  64% { text-shadow: var(--color-cyan) 0px 0px 8px; }
+  80% { text-shadow: var(--color-blue) 0px 0px 8px; }
+  100% { text-shadow: var(--color-magenta) 0px 0px 8px; }
+}
+
+a.glow {
+  text-decoration: none;
+  color: var(--color-white);
+  text-shadow: -1px 1px 1px var(--color-blue-gradient),
+               1px 1px 1px var(--color-green-accent),
+               1px -1px 1px var(--color-blue-gradient),
+               -1px -1px 1px var(--color-purple-gradient);
+  letter-spacing: 1pt;
+  -webkit-transition: text-shadow 2s linear;
+  -moz-transition: text-shadow 800ms linear;
+  -o-transition: text-shadow 800ms linear;
+  transition: text-shadow 800ms linear;
+  outline: 0 none;
+  font-size: 14px;
+}
+
+a.glow:hover,
+a.glow:focus {
+  color: var(--color-white);
+  animation: rainbow-shadow 2s linear infinite;
+}
+
+/* Images and Icons */
+.links img {
+  vertical-align: middle;
+  padding-left: 5px;
+  font-size: clamp(auto, 2.5vw, 12px);
+}
+
+.links a {
+  font-size: clamp(auto, 2.5vw, 12px);
+}
+
+.links h2 {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  color: var(--color-white);
+  padding: 0px;
+  width: 100%;
+  margin: 0px;
+  text-shadow: var(--color-white) 0px 0px 1px;
+  white-space: nowrap;
+  font-size: 1.2em;
+}
+
+.public-projects a {
+  font-size: clamp(auto, 2.5vw, 12px);
+}
+
+.public-projects h2 {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  color: var(--color-white);
+  padding: 0px;
+  height: inherit;
+  width: 100%;
+  margin: 0px;
+  text-shadow: var(--color-white) 0px 0px 1px;
+  white-space: nowrap;
+  font-size: 1.2em;
+}
+
+.border-left {
+  border-style: solid;
+  border-width: 0px 0px 0px 1px;
+  color: var(--color-white);
+  padding: 0px 0px 0px 10px;
+  height: inherit;
+}
+
+/* ========================================= */
+/* =========== Background Styles =========== */
+/* ========================================= */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: var(--gradient-main);
+  background-size: 200% 200%;
+  animation: gradientAnimation 40s infinite;
+}
+
+.star-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/star.gif') repeat-x center;
+  background-size: auto;
+  animation: gradientAnimation 40s infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
