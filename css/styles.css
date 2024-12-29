@@ -244,6 +244,7 @@ body {
 .right-items .item {
     height: 25px;
     width: 100%;
+    white-space: nowrap;
     text-align: center;
     margin-bottom: 2px; 
     border: 1px dotted var(--color-white);
@@ -251,7 +252,7 @@ body {
 }
 
 /* Mobile layout */
-@media (max-width: 800px) {
+@media (max-width: 750px) {
     .items {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -266,11 +267,11 @@ body {
     .right-items {
         grid-column: 2;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 5px;
         height: 105px;
-        width: 100%;
+        
     }
 
     .right-items .item {
