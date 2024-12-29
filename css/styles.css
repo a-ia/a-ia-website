@@ -234,36 +234,52 @@ body {
     
 }
 
-/* Mobile layout */
+/* Mobile Layout */
 @media (max-width: 800px) {
-
     .items {
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: minmax(auto, 2fr) minmax(auto, 4fr);
         gap: 10px;
+        width: 100%;
     }
 
     .left-item {
-        grid-column: 1;
-        grid-row: 1; 
+        grid-column: 1; 
+        grid-row: 1;
+        grid-template-columns: 1fr 2fr; 
+        align-items: center; 
     }
-    
-    .items {
-    display: grid;
-    grid-template-columns: auto;
-    grid-auto-rows: auto;
-    gap: 10px;
-    width: 100%;
-    }
-    
+        .scroll-box {
+            height: 100%;
+            width: 100%; 
+            overflow-x: hidden;
+            overflow-y: auto; 
+            -ms-overflow-style: none; 
+            scrollbar-width: none;
+            
+        }
+        
+        .scroll-box::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scroll-content {
+            overflow: hidden;
+            font-size: 9px; 
+            width: 100%; 
+            text-align: justify;
+            padding-left: 3px;
+        }
+        
+
     .right-items {
         grid-column: 2;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: repeat(3, 1fr);   
         gap: 5px;
         height: 105px;
-        
+        width: 100%;
     }
 
     .right-items .item {
@@ -275,6 +291,36 @@ body {
         justify-content: center;
     }
     
+    
+    .avatar {
+        grid-column: 1; 
+    }
+    
+    .online-status {
+        grid-column: 1; 
+    }
+
+    .scroll-box {
+        grid-column: 2; 
+        height: 100%;
+        width: 100%; 
+        overflow-x: hidden;
+        overflow-y: auto; 
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+    }
+    
+    .scroll-box::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .scroll-content {
+        overflow: hidden;
+        font-size: 9px; 
+        width: 100%; 
+        text-align: justify;
+        padding-left: 3px;
+    }
 }
         /* Adds numbers before each item 
         [class^="item"]::before {
