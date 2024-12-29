@@ -108,25 +108,26 @@ body {
 /* ========================================= */
 
 .left-sidebar-title {
+  padding: 0px;
   grid-area: left-sidebar-title;
   display: flex;
   align-items: center; 
-  justify-content: end; /* Align content to the left */
-  width: 100%; /* Ensure it spans full width of its container */
-  height: auto; /* Adjust height as needed */
+  justify-content: center;
+  width: 100%;
+  height: auto;
   text-shadow: var(--color-purple-glow) 0px 0px 8px;
 }
 
 .left-sidebar-title img {
-  margin: 0px 5px;
+  margin: 0px;
   font-size: clamp(12px, 2.5vw, auto);
   max-width: 35px;
   vertical-align: middle;
 }
 
 .left-sidebar-title h1 {
-  margin: 0; /* Remove margin from the title */
-  text-align: left; /* Align text to the left */
+  margin: 0; 
+  text-align: left;
 }
 
 .left-sidebar { 
@@ -134,7 +135,7 @@ body {
   margin: 0; /* Remove extra space between list items */
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 0; /* Keep spacing tight */
+  padding: 5px;
 }
 
         .side-container {
@@ -143,11 +144,12 @@ body {
         }
 
         .item { 
-            display: block;
+            /*display: block;*/
             flex-shrink: 0;
             width: 80px;
             height: auto;
-            padding: 5px;
+            /*display: flex;
+            flex-direction: row;*/
         }
         
         .mew { 
@@ -165,8 +167,9 @@ body {
         }
 
         .item img#sharon {
-            width: 100%;
-            height: 100%;
+
+            width: 75px;
+            height: 75px;
             object-fit: cover;
             display: block;
             border-style: solid;
@@ -177,7 +180,7 @@ body {
         .scroll-box {
             flex-grow: 1;
             height: 100px;
-            width: 100%;
+            width: 75px;
             overflow: auto;
             padding: 0 10px;
             display: flex;
