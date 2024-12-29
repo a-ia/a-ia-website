@@ -2,6 +2,7 @@
   /* Base colors */
   --color-white: #fff;
   --color-pink: pink;
+  --color-grey: #ddd;
   
   /* Gradient colors */
   --color-pink-gradient: #e297b2;
@@ -46,17 +47,6 @@ body {
   margin: 0;
   display: flex; 
 }
- 
-.main-body, .footer {
-  width: 400px; 
-  max-width: 100%; 
-  margin: 0 auto; 
-}
-
-/* For the content inside */
-.main-body > *, .footer-container {
-  width: 100%;
-}
 
 .container {
   display: inline-grid;
@@ -69,23 +59,23 @@ body {
   grid-template-areas:
     "Title Title"
     "left-sidebar main-body"
-    "left-sidebar footer";
+    "left-sidebar main-body";
 }
 
 /* Mobile responsiveness */
 @media (max-width: 800px) { 
-  .main-body, .footer {
+  .main-body {
     width: 100%;
     padding: 0 0px;
+    margin: 0 0px;
   }
   
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
       "Title"
-      "main-body"
       "left-sidebar"
-      "footer";
+      "main-body";
   }
 
   .items {
@@ -95,13 +85,6 @@ body {
     grid-auto-flow: row;
     gap: 0px 0px;
   }
-}
-
-.Title, .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
 .Title { 
@@ -141,7 +124,7 @@ body {
 .left-sidebar { 
   grid-area: left-sidebar;
   margin: 0; 
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-grey);
   border-radius: 5px;
   padding: 5px;
 }
@@ -218,7 +201,7 @@ body {
 .left-item {
     grid-column: 1 / -1;
     display: grid;
-    height: 105px;
+    height: 100px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
@@ -252,7 +235,8 @@ body {
 }
 
 /* Mobile layout */
-@media (max-width: 750px) {
+@media (max-width: 800px) {
+
     .items {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -262,6 +246,14 @@ body {
     .left-item {
         grid-column: 1;
         grid-row: 1; 
+    }
+    
+    .items {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 100%;
     }
     
     .right-items {
@@ -282,6 +274,7 @@ body {
         align-items: center;
         justify-content: center;
     }
+    
 }
         /* Adds numbers before each item 
         [class^="item"]::before {
@@ -354,15 +347,32 @@ body {
 /* ============= Footer Styles ============= */
 /* ========================================= */
 
-.footer { 
-  grid-area: footer;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+ 
+.main-body .footer-container {
+  width: 100%;
+  margin: 0 auto; 
+}
+
+/* For the content inside */
+.main-body > *, .footer-container {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
 
 .footer-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
+  padding: 0px;
+  margin: 0px;
   grid-template-areas:
     "links public-projects"
     "credits credits";
@@ -377,6 +387,8 @@ body {
   width: 100%;
   padding: 0px;
   margin: 0px;
+  border-radius: 5px;
+  border: 1px solid var(--color-grey);
 }
 
 /* Blinking Animation */
@@ -499,6 +511,13 @@ a.glow:focus {
   height: inherit;
 }
 
+.credits {
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+}
+
+
 /* ========================================= */
 /* =========== Background Styles =========== */
 /* ========================================= */
@@ -530,3 +549,4 @@ a.glow:focus {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
