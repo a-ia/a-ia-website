@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error('Error:', error);
     }
   function randomBlink() {
-    // Selects both title text and stars
     const elements = document.querySelectorAll('.left-sidebar-title .title-text, .left-sidebar-title .star');
     if (!elements.length) return;
 
@@ -42,17 +41,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const isGlitchy = Math.random() < 0.3; // 30% chance for a glitchy blink
         const blinkClass = isGlitchy ? 'glitch-blink' : 'blink';
 
-        // Addd the selected blink class
+        // Adds the selected blink class
         el.classList.add(blinkClass);
 
-        // Removed the class after the animation/transition completes
+        // Removes the class after the animation/transition completes
         const duration = isGlitchy ? 600 : 500; 
         setTimeout(() => {
             el.classList.remove(blinkClass);
         }, duration);
     });
 
-    // Scheduled the next blink at a random interval
+    // Schedules the next blink at a random interval
     const nextBlink = Math.random() * 3000 + 1000; // Random point in time between 1s and 4s
     setTimeout(randomBlink, nextBlink);
   }
