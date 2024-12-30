@@ -2,7 +2,7 @@
     const container = document.querySelector('.dmg-container');
     let position = 0;
     let movingRight = true;
-    const speed = 0.5;
+    const speed = 0.7;
 
     function animate() {
       const maxPosition = container.offsetWidth - gif.offsetWidth;

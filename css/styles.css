@@ -131,13 +131,43 @@ body {
 }
 
 .left-sidebar-title .star {
-    font-size: 0.5em; 
-    margin: 0 5px; 
+    font-size: 0.5em;
+    opacity: 1;
+    margin: 0 5px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.left-sidebar-title .star.blink {
+    opacity: 0;
+}
+
+.left-sidebar-title .star.glitch-blink {
+    animation: glitch-blink 0.2s steps(1, end) 3;
+}
+
+@keyframes glitch-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .left-sidebar-title .title-text {
     font-size: 0.5em;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
+
+.left-sidebar-title .title-text.blink {
+    opacity: 0;
+}
+
+.left-sidebar-title .title-text.glitch-blink {
+    animation: glitch-blink 0.2s steps(1, end) 3;
+}
+
 
 .left-sidebar { 
   grid-area: left-sidebar;
@@ -613,79 +643,3 @@ a.glow:focus {
   100% { background-position: 0% 50%; }
 }
 
-
-    .gif-container {
-
-      width: 100%;
-
-      height: 25px;
-
-      position: relative;
-
-      background-color: none;
-
-      overflow: hidden;
-
-    }
-
-    .moving-gif {
-
-      width: 25px;
-
-      height: 25px;
-
-      position: absolute;
-
-      left: 0;
-
-      image: url('../images/dmg.gif');
-
-      transform: scaleX(1);
-
-      animation: moveGif 4s linear infinite;
-
-    }
-
-    @keyframes moveGif {
-
-      0% {
-
-        left: 0;
-
-        transform: scaleX(1);
-
-      }
-
-      45% {
-
-        left: calc(100% - 25px);
-
-        transform: scaleX(1);
-
-      }
-
-      50% {
-
-        left: calc(100% - 25px);
-
-        transform: scaleX(-1);
-
-      }
-
-      95% {
-
-        left: 0;
-
-        transform: scaleX(-1);
-
-      }
-
-      100% {
-
-        left: 0;
-
-        transform: scaleX(1);
-
-      }
-
-    }
