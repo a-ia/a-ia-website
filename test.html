@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <style>
+
+    .container {
+
+      width: 100%;
+
+      height: 25px;
+
+      position: relative;
+
+      background-color: none;
+
+      overflow: hidden;
+
+    }
+
+    .moving-gif {
+
+      width: 25px;
+
+      height: 25px;
+
+      position: absolute;
+
+      left: 0;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <img src="./images/dmg.gif" class="moving-gif" alt="Moving animation">
+
+  </div>
+
+  <script>
+
+    const gif = document.querySelector('.moving-gif');
+
+    const container = document.querySelector('.container');
+
+    let position = 0;
+
+    let movingRight = true;
+
+    const speed = 2; // Adjust speed (pixels per frame)
+
+    function animate() {
+
+      const maxPosition = container.offsetWidth - gif.offsetWidth;
+
+      if (movingRight) {
+
+        position += speed;
+
+        gif.style.transform = 'scaleX(1)';
+
+        if (position >= maxPosition) {
+
+          position = maxPosition;
+
+          movingRight = false;
+
+        }
+
+      } else {
+
+        position -= speed;
+
+        gif.style.transform = 'scaleX(-1)';
+
+        if (position <= 0) {
+
+          position = 0;
+
+          movingRight = true;
+
+        }
+
+      }
+
+      gif.style.left = position + 'px';
+
+      requestAnimationFrame(animate);
+
+    }
+
+    // Start the animation
+
+    animate();
+
+  </script>
+
+</body>
+
+</html>
