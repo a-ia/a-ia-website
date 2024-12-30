@@ -122,12 +122,12 @@ body {
 
 .left-sidebar-title h1 {
 
-    display: flex; /* Makes the h1 a flex container */
-    justify-content: space-between; /* Stars go to opposite ends */
-    align-items: center; /* Vertically centers everything */
-    margin: 0; /* Removes default margin */
-    position: relative; /* Ensures proper positioning */
-    text-align: center; /* Centers text content */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 0; 
+    position: relative; 
+    text-align: center; 
 }
 
 .left-sidebar-title .star {
@@ -256,8 +256,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    justify-content: space-between; /* Ensures even vertical spacing */
-    height: 100%; /* Full container height */
+    justify-content: space-between;
+    height: 100%; 
     box-sizing: border-box;
 }
 
