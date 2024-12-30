@@ -1,16 +1,15 @@
     .dmg-container {
       width: 100%;
-      height: 35px;
+      height: 32px;
       position: relative;
       background-color: none;
       overflow: hidden;
 }
 
     .moving-gif {
-      width: auto;
-      height: 35px;
       position: absolute;
       left: 0;
     }
     
+
 
