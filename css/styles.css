@@ -46,11 +46,12 @@ body {
   align-items: center;
   margin: 0;
   display: flex; 
+  width: 100%;
 }
 
 .container {
   display: inline-grid;
-  grid-template-columns: auto minmax(400px, 1fr);
+  grid-template-columns: auto minmax(min-content, 1fr);
   grid-template-rows: auto 1fr auto;
   position: relative;
   z-index: 1;
@@ -60,12 +61,18 @@ body {
     "Title Title"
     "left-sidebar main-body"
     "left-sidebar main-body";
+  max-width: 50%; 
+  box-sizing: border-box;
+  align-items: stretch; 
 }
+
+
 
 /* Mobile responsiveness */
 @media (max-width: 800px) { 
   .main-body {
     width: 100%;
+    height: 100%;
     padding: 0 0px;
     margin: 0 0px;
   }
@@ -101,9 +108,6 @@ body {
 .left-sidebar-title {
   padding: 0;
   grid-area: left-sidebar-title;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: auto;
   text-shadow: var(--color-white) 0px 0px 1px;
@@ -113,13 +117,26 @@ body {
   border-width: 0px 0px 1px 0px;
   color: var(--color-white);
   margin-bottom: 5px;
-  
 }
 
+
 .left-sidebar-title h1 {
-  margin: 0; 
-  text-align: left;
-    font-size: 1.0rem;
+
+    display: flex; /* Makes the h1 a flex container */
+    justify-content: space-between; /* Stars go to opposite ends */
+    align-items: center; /* Vertically centers everything */
+    margin: 0; /* Removes default margin */
+    position: relative; /* Ensures proper positioning */
+    text-align: center; /* Centers text content */
+}
+
+.left-sidebar-title .star {
+    font-size: 0.5em; 
+    margin: 0 5px; 
+}
+
+.left-sidebar-title .title-text {
+    font-size: 0.5em;
 }
 
 .left-sidebar { 
@@ -144,7 +161,6 @@ body {
           color: var(--color-pink);
           border-top: 1px dashed var(--color-white);
           position: sticky;
-          top: 0;
         }
 
         .items img#sharon {
@@ -204,7 +220,7 @@ body {
 .left-item {
     grid-column: 1 / -1;
     display: grid;
-    height: 100px;
+    height: 105px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
@@ -228,13 +244,21 @@ body {
 }
 
 .right-items .item {
-    height: 22px;
+    height: 27px;
     width: 100%;
     white-space: nowrap;
     text-align: center;
     margin-bottom: 2px; 
-    border: 1px dotted var(--color-white);
-    
+    border: 1px dotted var(--color-white); 
+}
+
+.right-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between; /* Ensures even vertical spacing */
+    height: 100%; /* Full container height */
+    box-sizing: border-box;
 }
 
 /* Mobile Layout */
@@ -255,6 +279,7 @@ body {
         .scroll-box {
             height: 100%;
             width: 100%; 
+            min-width: 75px;
             overflow-x: hidden;
             overflow-y: auto; 
             -ms-overflow-style: none; 
@@ -278,7 +303,7 @@ body {
     .right-items {
         grid-column: 2;
         display: grid;
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(3, 1fr); 
         grid-template-rows: repeat(3, 1fr);   
         gap: 5px;
         height: 105px;
@@ -346,13 +371,14 @@ body {
 /* ========================================== */
 
 .description {
+  padding: 5px;
 }
 
 .main-body { 
   grid-area: main-body;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  color: var(--color-white);
+  border-left: 1px dotted var(--color-white);
+  border-right: 1px dotted var(--color-white);
+  border-bottom: 1px solid var(--color-white);
 }
 
 
@@ -402,27 +428,13 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
- 
-.main-body .footer-container {
-  width: 100%;
-  margin: 0 auto; 
-}
-
-/* For the content inside */
-.main-body > *, .footer-container {
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-
 
 .footer-container {
+  grid-area: footer-container;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 20px;
-  padding: 0px;
-  margin: 0px;
+  margin: 10px;
   grid-template-areas:
     "links public-projects"
     "credits credits";
@@ -600,4 +612,3 @@ a.glow:focus {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
