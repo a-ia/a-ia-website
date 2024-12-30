@@ -61,7 +61,8 @@ body {
     "Title Title"
     "left-sidebar main-body"
     "left-sidebar main-body";
-  max-width: 50%; 
+  width: 100%; 
+  max-width: 700px;
   box-sizing: border-box;
   align-items: stretch; 
 }
