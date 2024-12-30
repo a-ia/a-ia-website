@@ -99,26 +99,27 @@ body {
 /* ========================================= */
 
 .left-sidebar-title {
-  padding: 0px;
+  padding: 0;
   grid-area: left-sidebar-title;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   width: 100%;
   height: auto;
-  text-shadow: var(--color-purple-glow) 0px 0px 8px;
-}
-
-.left-sidebar-title img {
-  margin: 0px;
-  font-size: clamp(12px, 2.5vw, auto);
-  max-width: 35px;
-  vertical-align: middle;
+  text-shadow: var(--color-white) 0px 0px 1px;
+  background: var(--gradient-main); 
+  -webkit-background-clip: border-box;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  color: var(--color-white);
+  margin-bottom: 5px;
+  
 }
 
 .left-sidebar-title h1 {
   margin: 0; 
   text-align: left;
+    font-size: 1.0rem;
 }
 
 .left-sidebar { 
@@ -142,6 +143,8 @@ body {
         hr {
           color: var(--color-pink);
           border-top: 1px dashed var(--color-white);
+          position: sticky;
+          top: 0;
         }
 
         .items img#sharon {
@@ -195,7 +198,7 @@ body {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
     gap: 10px;
-    width: 155px;
+    width: 150px;
 }
 
 .left-item {
@@ -225,7 +228,7 @@ body {
 }
 
 .right-items .item {
-    height: 25px;
+    height: 22px;
     width: 100%;
     white-space: nowrap;
     text-align: center;
@@ -280,11 +283,12 @@ body {
         gap: 5px;
         height: 105px;
         width: 100%;
+        
     }
 
     .right-items .item {
         width: 100%;
-        height: auto;
+        height: 25px;
         margin: 0;
         display: flex;
         align-items: center;
@@ -500,7 +504,7 @@ a.glow {
   -o-transition: text-shadow 800ms linear;
   transition: text-shadow 800ms linear;
   outline: 0 none;
-  font-size: 14px;
+  font-size: 0.6rem;
 }
 
 a.glow:hover,
@@ -516,10 +520,11 @@ a.glow:focus {
   font-size: clamp(auto, 2.5vw, 12px);
 }
 
+
+
 .links a {
   font-size: clamp(auto, 2.5vw, 12px);
 }
-
 .links h2 {
   border-style: solid;
   border-width: 0px 0px 1px 0px;
