@@ -61,12 +61,14 @@ gif.addEventListener('click', (event) => {
         container.style.height = '100%';
         container.style.overflow = 'hidden';
         container.style.zIndex = '-1'; /*Places container below all content*/
+        container.style.pointerEvents = 'none';
         // Position the GIF at the click coordinates
         gif.style.position = 'fixed'; /* Changed to fixed positioning */
-        gif.style.zIndex = '9999'; /*Fix: Dmg should be over all content, 9999 before */
+        gif.style.zIndex = '2147483647'; /*lol this doesn't work*/
         gif.style.transition = 'none'; /* Ensures no transition delay */
         gif.style.left = clickX - (gif.offsetWidth / 2) + 'px';
         gif.style.top = clickY - (gif.offsetHeight / 2) + 'px';
+        gif.style.pointerEvents = 'auto';
         // Update stored positions
         positionX = clickX - (gif.offsetWidth / 2);
         positionY = clickY - (gif.offsetHeight / 2);
