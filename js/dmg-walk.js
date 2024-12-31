@@ -7,6 +7,23 @@ const speed = 6;
 let autoAnimate = true;
 let isFullScreen = false;
 
+const originalContainerStyle = {
+    position: container.style.position,
+    top: container.style.top,
+    left: container.style.left,
+    width: container.style.width,
+    height: container.style.height,
+    overflow: container.style.overflow,
+    zIndex: container.style.zIndex
+};
+
+const originalGifStyle = {
+    position: gif.style.position,
+    top: gif.style.top,
+    left: gif.style.left,
+    zIndex: gif.style.zIndex
+};
+
 function animate() {
     if (autoAnimate) {
         const maxPosition = container.offsetWidth - gif.offsetWidth;
