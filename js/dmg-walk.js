@@ -84,3 +84,5 @@ function handleKeyPress(event) {
     gif.style.top = positionY + 'px';
 }
 animate();
+
+/*Create way to click dmg and rever to original container or allow clickable webpage*/
