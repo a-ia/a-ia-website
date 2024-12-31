@@ -25,7 +25,7 @@
   left: 0;
   top: 0;
   transition: transform 0.2s ease; /* Smooth flipping effect */
-  z-index: 1; /* Ensure the GIF is above its container */
+  z-index: 2; /* Ensure the GIF is above its container */
 }
 
 

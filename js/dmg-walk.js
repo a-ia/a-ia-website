@@ -60,12 +60,12 @@ gif.addEventListener('click', (event) => {
         container.style.width = '100%';
         container.style.height = '100%';
         container.style.overflow = 'hidden';
-        container.style.zIndex = '-1'; /*Places container below all content*/
-        container.style.pointerEvents = 'none';
+        container.style.zIndex = '2'; /*I may be stupid*/
+        container.style.pointerEvents = 'none'; /* :D */
         // Position the GIF at the click coordinates
-        gif.style.position = 'fixed'; /* Changed to fixed positioning */
-        gif.style.zIndex = '2147483647'; /*lol this doesn't work*/
-        gif.style.transition = 'none'; /* Ensures no transition delay */
+        gif.style.position = 'fixed'; 
+        gif.style.zIndex = '2147483647'; /* Looking good */
+        gif.style.transition = 'none'; 
         gif.style.left = clickX - (gif.offsetWidth / 2) + 'px';
         gif.style.top = clickY - (gif.offsetHeight / 2) + 'px';
         gif.style.pointerEvents = 'auto';
@@ -75,24 +75,6 @@ gif.addEventListener('click', (event) => {
         // Add key movement listeners
         document.addEventListener('keydown', handleKeyPress);
     } else {
-        /*
-        // Return to original container and animation
-        isFullScreen = false;
-        autoAnimate = true;
-        
-        // Restore original container styles
-        Object.assign(container.style, originalContainerStyle);
-        
-        // Restore original gif styles
-        Object.assign(gif.style, originalGifStyle);
-        
-        // Reset position for animation
-        positionX = 0;
-        positionY = 0;
-        movingRight = true;
-        
-        document.removeEventListener('keydown', handleKeyPress);
-        */
         
         // Return to original container and animationi
         isFullScreen = false;
@@ -116,11 +98,6 @@ gif.addEventListener('click', (event) => {
 });
 
 function handleKeyPress(event) {
-    /*event.preventDefault();
-    const maxX = window.innerWidth - gif.offsetWidth;
-    const maxY = window.innerHeight - gif.offsetHeight;
-    */
-    if (!isFullScreen) return;
 
     const maxX = window.innerWidth - gif.offsetWidth;
     const maxY = window.innerHeight - gif.offsetWidth;
@@ -148,4 +125,3 @@ function handleKeyPress(event) {
 }
 animate();
 
-/*Create way to click dmg and rever to original container or allow clickable webpage*/
