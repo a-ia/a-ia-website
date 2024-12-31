@@ -1,4 +1,4 @@
-    .dmg-container {
+    /*.dmg-container {
       width: 100%;
       height: 32px;
       position: relative;
@@ -9,7 +9,23 @@
     .moving-gif {
       position: absolute;
       left: 0;
-    }
+    }*/
     
+.dmg-container {
+  width: 100%;
+  height: 32px;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  z-index: 0; /* Base layer for the initial container */
+}
+
+.moving-gif {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.2s ease; /* Smooth flipping effect */
+  z-index: 1; /* Ensure the GIF is above its container */
+}
 
 
