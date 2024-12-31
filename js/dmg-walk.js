@@ -60,10 +60,10 @@ gif.addEventListener('click', (event) => {
         container.style.width = '100%';
         container.style.height = '100%';
         container.style.overflow = 'hidden';
-        container.style.zIndex = '9998';
+        container.style.zIndex = '-1'; /*Places container below all content*/
         // Position the GIF at the click coordinates
         gif.style.position = 'fixed'; /* Changed to fixed positioning */
-        gif.style.zIndex = '9999';
+        gif.style.zIndex = '9999'; /*Fix: Dmg should be over all content, 9999 before */
         gif.style.transition = 'none'; /* Ensures no transition delay */
         gif.style.left = clickX - (gif.offsetWidth / 2) + 'px';
         gif.style.top = clickY - (gif.offsetHeight / 2) + 'px';
@@ -72,13 +72,57 @@ gif.addEventListener('click', (event) => {
         positionY = clickY - (gif.offsetHeight / 2);
         // Add key movement listeners
         document.addEventListener('keydown', handleKeyPress);
+    } else {
+        /*
+        // Return to original container and animation
+        isFullScreen = false;
+        autoAnimate = true;
+        
+        // Restore original container styles
+        Object.assign(container.style, originalContainerStyle);
+        
+        // Restore original gif styles
+        Object.assign(gif.style, originalGifStyle);
+        
+        // Reset position for animation
+        positionX = 0;
+        positionY = 0;
+        movingRight = true;
+        
+        document.removeEventListener('keydown', handleKeyPress);
+        */
+        
+        // Return to original container and animationi
+        isFullScreen = false;
+
+        // Restore origin container styles
+        Object.assign(container.style, originalContainerStyle);
+        
+        // Restore original gif styles
+        Object.assign(gif.style, originalGifStyle);
+        
+        // Reset position for animation
+        positionX = 0;
+        positionY = 0;
+        movingRight = true;
+        
+        // Remove key listener and restart animation
+        document.removeEventListener('keydown', handleKeyPress);
+        autoAnimate = true; /* Enable animation before calling animate */
+        animate(); /* Restart the animation */
     }
 });
 
 function handleKeyPress(event) {
-    event.preventDefault(); /* Prevent default scroll behavior */
+    /*event.preventDefault();
     const maxX = window.innerWidth - gif.offsetWidth;
     const maxY = window.innerHeight - gif.offsetHeight;
+    */
+    if (!isFullScreen) return;
+
+    const maxX = window.innerWidth - gif.offsetWidth;
+    const maxY = window.innerHeight - gif.offsetWidth;
+
     switch (event.key) {
         case 'ArrowRight':
             positionX = Math.min(positionX + speed, maxX);
