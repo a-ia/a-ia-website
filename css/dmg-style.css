@@ -1,16 +1,3 @@
-    /*.dmg-container {
-      width: 100%;
-      height: 32px;
-      position: relative;
-      background-color: none;
-      overflow: hidden;
-}
-
-    .moving-gif {
-      position: absolute;
-      left: 0;
-    }*/
-    
 .dmg-container {
   width: 100%;
   height: 32px;
@@ -28,4 +15,12 @@
   z-index: 2; /* Ensure the GIF is above its container */
 }
 
-
+.bubble-gif {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 3; 
+  display: none;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
