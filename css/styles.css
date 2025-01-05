@@ -420,10 +420,22 @@ body {
 .description {
   grid-row: 1;
   padding: 5px;
-  overflow-y: auto; /* Enable scrolling */
-  overflow-x: hidden; /* Optional, to avoid horizontal scrolling */
-  max-height:209px;
+  overflow-y: auto;
+  overflow-x: hidden; 
   height: 100%;
+}
+
+.photo-log {
+  padding: 5px;
+  overflow-y: hidden;
+  overflow-x: hidden; 
+  max-height: 500px;
+  height: 100%;
+}
+
+.iframe-photolog {
+  height: 100%;
+  width: 100%;
 }
 
 .footer-container {
