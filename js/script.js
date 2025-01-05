@@ -5,12 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('gradient-bg element not found');
         return;
     }
-
-    // Add a single star-layer for the base repeated effect
+    
     const layer = document.createElement('div');
     layer.className = 'star-layer';
     gradientBg.appendChild(layer);
-
     console.log("Base star layer added successfully.");
-       
-});  
+    
+    let isDark = false;
+    
+    // Add event listener to the button
+    const darkModeButton = document.getElementById('darkModeToggle');
+    console.log('Dark mode:', isDark);
+    if (darkModeButton) {
+        darkModeButton.addEventListener('click', function() {
+            isDark = !isDark;
+            if (isDark) {
+                gradientBg.style.background = 'var(--gradient-main-dark)';
+            } else {
+                gradientBg.style.background = 'var(--gradient-main)';
+            }
+        });
+    } 
+});
