@@ -436,6 +436,11 @@ body {
 .iframe-photolog {
   height: 100%;
   width: 100%;
+  border-width: 0px;
+}
+
+iframe {
+  border-width: 0px;
 }
 
 .footer-container {
