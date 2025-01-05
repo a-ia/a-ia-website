@@ -63,7 +63,7 @@ body {
     "left-sidebar main-body"
     "left-sidebar main-body";
   width: 100%; 
-  max-width: 700px;
+  max-width: 800px;
   box-sizing: border-box;
   align-items: stretch; 
 }
@@ -202,8 +202,8 @@ body {
 
         .items img#sharon {
 
-            width: 75px;
-            height: 75px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             display: block;
             border-style: solid;
@@ -212,7 +212,7 @@ body {
         }
 
         .scroll-box {
-            height: 100%;
+            height: 100px;
             width: 100%; 
             overflow-x: hidden;
             overflow-y: auto; 
@@ -240,7 +240,6 @@ body {
             text-align: center;
             font-size: 10px;
             padding: 0px;
-            margin: auto;
         }
         
 /* Base sidebar layout */
@@ -249,7 +248,7 @@ body {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
     gap: 10px;
-    width: 155px;
+    width: 200px;
 }
 
 .left-item {
@@ -428,9 +427,8 @@ body {
 .photo-log {
   padding: 5px;
   overflow-y: hidden;
-  overflow-x: hidden; 
-  max-height: 500px;
-  height: 100%;
+  overflow-x: hidden;
+height: 100%;
 }
 
 .iframe-photolog {
