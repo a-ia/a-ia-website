@@ -616,6 +616,28 @@ a {
   100% { text-shadow: var(--color-magenta) 0px 0px 8px; }
 }
 
+p2.glow {
+  text-decoration: none;
+  color: var(--color-white);
+  text-shadow: -1px 1px 1px var(--color-blue-gradient),
+               1px 1px 1px var(--color-green-accent),
+               1px -1px 1px var(--color-blue-gradient),
+               -1px -1px 1px var(--color-purple-gradient);
+  letter-spacing: 1pt;
+  -webkit-transition: text-shadow 2s linear;
+  -moz-transition: text-shadow 800ms linear;
+  -o-transition: text-shadow 800ms linear;
+  transition: text-shadow 800ms linear;
+  outline: 0 none;
+  font-size: 0.8rem;
+}
+
+p2.glow:hover,
+p2.glow:focus {
+  color: var(--color-white);
+  animation: rainbow-shadow 2s linear infinite;
+}
+
 a.glow {
   text-decoration: none;
   color: var(--color-white);

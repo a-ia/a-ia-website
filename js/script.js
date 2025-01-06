@@ -13,12 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
     layer.className = 'star-layer';
     gradientBg.appendChild(layer);
     
-    let isDark = false;
+    let isDark = localStorage.getItem('darkMode') === 'true';
+    
+    if (isDark) {
+        [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
+            if (element) element.style.background = 'var(--gradient-main-dark)';
+        });
+    }
     
     const darkModeButton = document.getElementById('darkModeToggle');
     if (darkModeButton) {
         darkModeButton.addEventListener('click', function() {
             isDark = !isDark;
+            localStorage.setItem('darkMode', isDark);
             
             [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
                 if (element) element.style.opacity = '0';
