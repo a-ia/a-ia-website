@@ -153,7 +153,6 @@ body {
 
 
 .left-sidebar-title h1 {
-
     display: flex;
     justify-content: space-between; 
     align-items: center; 
@@ -695,8 +694,7 @@ a.glow:focus {
   z-index: 0;
   background: var(--gradient-main);
   background-size: 200% 200%;
-  animation: gradientAnimation 40s infinite;
-  transition: background 0.5s ease;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .star-layer {
@@ -726,4 +724,11 @@ button {
   padding: 0;
   margin: 0px;
   cursor: pointer;
+}
+
+.gradient-bg,
+.left-sidebar-title,
+.main-body .main-header,
+.main-body .main-header h1 {
+    transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
 }
