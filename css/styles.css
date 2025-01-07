@@ -497,7 +497,6 @@ iframe {
   margin: 0;
   width: inherit;
   /*white-space: nowrap;*/
-  text-shadow: var(--color-purple-glow) 0px 0px 8px;
 }
 
 .center-title h1 {
@@ -507,7 +506,6 @@ iframe {
 }
 
 .main-body .main-header h1 {
-  text-shadow: var(--color-white) 0px 0px 1px;
   margin: 0;
   background: var(--gradient-main);
   -webkit-background-clip: text;
