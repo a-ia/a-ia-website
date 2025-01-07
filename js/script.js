@@ -9,17 +9,23 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
     
-    const layer = document.createElement('div');
-    layer.className = 'star-layer';
-    gradientBg.appendChild(layer);
+    const starLayer = document.createElement('div');
+    starLayer.className = 'star-layer';
+    gradientBg.appendChild(starLayer);
     
     let isDark = localStorage.getItem('darkMode') === 'true';
     
-    if (isDark) {
-        [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
-            if (element) element.style.background = 'var(--gradient-main-dark)';
+    const updateGradient = () => {
+        const newGradient = isDark ? 'var(--gradient-main-dark)' : 'var(--gradient-main)';
+        gradientBg.style.background = newGradient;
+        [sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
+            if (element) {
+                element.style.background = newGradient;
+            }
         });
-    }
+    };
+    
+    updateGradient();
     
     const darkModeButton = document.getElementById('darkModeToggle');
     if (darkModeButton) {
@@ -27,25 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
             isDark = !isDark;
             localStorage.setItem('darkMode', isDark);
             
-            [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
-                if (element) element.style.opacity = '0';
-            });
+            gradientBg.style.transition = 'opacity 0.6s';
+            gradientBg.style.opacity = '0';
             
             setTimeout(() => {
-                if (isDark) {
-                    [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
-                        if (element) element.style.background = 'var(--gradient-main-dark)';
-                    });
-                } else {
-                    [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
-                        if (element) element.style.background = 'var(--gradient-main)';
-                    });
-                }
-                
-                [gradientBg, sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
-                    if (element) element.style.opacity = '1';
-                });
+                updateGradient();
+                gradientBg.style.opacity = '1';
             }, 500);
         });
     }
 });
+

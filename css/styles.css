@@ -11,7 +11,7 @@
   --color-green-accent: #CAD6B6;
 
   /* Deep Gradient colors */
-  --color-deeper-blue-gradient: #2B2933;
+  --color-deep-red-gradient: #2d0809;
   --color-deep-blue-gradient: #262047;
   --color-deep-violet-gradient: #32174d;
 
@@ -31,19 +31,21 @@
   --gradient-main: linear-gradient(45deg, var(--color-pink-gradient), var(--color-purple-gradient), var(--color-blue-gradient));
 
   /* Dark gradient */
-   --gradient-main-dark: linear-gradient(45deg, var(--color-deeper-blue-gradient), var(--color-deep-blue-gradient), var(--color-deep-violet-gradient));
+   --gradient-main-dark: linear-gradient(45deg, var(--color-deep-red-gradient), var(--color-deep-blue-gradient), var(--color-deep-violet-gradient));
 }
 
 /* ======================================== */
 /* ========= Base and Grid Styles ========= */
 /* ======================================== */
 
-/* @font-face {
-    font-family: 'boop';
-    src: url('fonts/boop-boop.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
+
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url(/fonts/PixgamerRegular-OVD6A.ttf) format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
 
 body, html {
   color: var(--color-white);
@@ -55,6 +57,7 @@ body {
   margin: 0;
   display: flex; 
   width: 100%;
+  font-family: "Pixelated MS Sans Serif", "Pixel Sans Serif", sans-serif;
 }
 
 .container {
@@ -101,7 +104,6 @@ body {
     overflow-y: auto;
     overflow-x: hidden; 
     height: 100%;
-    font-size:1.1rem
 }
 
   .container {
@@ -148,6 +150,7 @@ body {
   border-width: 0px 0px 1px 0px;
   color: var(--color-white);
   margin-bottom: 5px;
+  transition: background 0.5s ease-in-out;
   /*-webkit-text-fill-color: transparent;*/
 }
 
@@ -253,7 +256,6 @@ body {
         
         .scroll-content {
             overflow: hidden;
-            font-size: 9px; 
             width: 100%; 
             text-align: left;
             padding-left: 3px;
@@ -351,7 +353,6 @@ body {
         
         .scroll-content {
             overflow: hidden;
-            font-size: 9px; 
             width: 100%; 
             text-align: left;
             padding-left: 3px;
@@ -385,7 +386,6 @@ body {
     
     .online-status {
         grid-column: 1; 
-        font-size: 0.7rem;
     }
 
     .scroll-box {
@@ -404,7 +404,6 @@ body {
     
     .scroll-content {
         overflow: hidden;
-        font-size: 9px; 
         width: 100%; 
         text-align: left;
         padding-left: 3px;
@@ -448,7 +447,7 @@ body {
   overflow-x: hidden; 
   height: 100%;
   max-height: 200px;
-  font-size:1.1rem
+  font-size:1.4rem;
 }
 
 .photo-log {
@@ -502,17 +501,14 @@ iframe {
 }
 
 .main-body .main-header h1 {
-  font-size: 1.2em;
   text-shadow: var(--color-white) 0px 0px 1px;
   margin: 0;
-  /*white-space: nowrap;*/
   background: var(--gradient-main);
   -webkit-background-clip: text;
   text-align: center;
-  /*-webkit-text-fill-color: transparent;*/
-
   word-wrap: break-word;
   overflow-wrap: break-word;
+  transition: background 0.5s ease-in-out;
 }
 
 .main-body .main-header {
@@ -559,7 +555,7 @@ iframe {
   padding: 0px;
   margin: 0px;
   border-radius: 5px;
-  border: 1px solid var(--color-grey);
+  border: 2px dotted var(--color-grey);
 }
 
 
@@ -699,7 +695,6 @@ a.glow:focus {
   margin: 0px;
   text-shadow: var(--color-white) 0px 0px 1px;
   white-space: nowrap;
-  font-size: 1.2em;
   padding-left: 5px;
 }
 
@@ -746,11 +741,6 @@ button {
   padding: 0;
   margin: 0px;
   cursor: pointer;
+  font-family: "Pixelated MS Sans Serif", sans-serif;
 }
 
-.gradient-bg,
-.left-sidebar-title,
-.main-body .main-header,
-.main-body .main-header h1 {
-    transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
-}
