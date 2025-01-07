@@ -33,9 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
             isDark = !isDark;
             localStorage.setItem('darkMode', isDark);
             
+            const toggleName = document.getElementById('toggleName');
+            if (toggleName) {
+                toggleName.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+            
             gradientBg.style.transition = 'opacity 0.6s';
             gradientBg.style.opacity = '0';
-            
+ 
             setTimeout(() => {
                 updateGradient();
                 gradientBg.style.opacity = '1';
