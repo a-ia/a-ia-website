@@ -795,7 +795,7 @@ p3 {
   height: initial;
   width: initial;
   display:block;
-  margin-top: 1px;
+  margin-top: 3px;
 }
 
 p3:hover { 
@@ -805,11 +805,9 @@ p3:hover {
   border-style:dashed;
   border-width: 1px;
   border-color: var(--color-white);
-  height: initial;
-  width: initial;
-  display:block;
   margin-bottom: 0px;
   flex: 1 1 auto;
-  height: 20px;
+  height: 22px;
+
 }
 
