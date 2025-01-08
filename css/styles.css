@@ -681,7 +681,7 @@ a.glow:focus {
 }
 
 .links h2 {
-  border-style: solid;
+  border-style: dotted;
   border-width: 0px 0px 1px 0px;
   color: var(--color-white);
   padding: 0px;
@@ -697,7 +697,7 @@ a.glow:focus {
 }
 
 .public-projects h2 {
-  border-style: solid;
+  border-style: dotted;
   border-width: 0px 0px 1px 0px;
   color: var(--color-white);
   padding: 0px;
