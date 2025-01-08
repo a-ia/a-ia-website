@@ -94,6 +94,16 @@ body {
     padding: 0 0px;
     margin: 0 0px;
   }
+p3 {
+    border-width: 0px;
+  }
+p3:hover { 
+  background-color: transparent;
+  border-style:dotted;
+  border-width: 0px;
+  border-color: var(--color-white);
+}
+
 
   .photo-log {
    height: 100%;
@@ -311,11 +321,13 @@ body {
 }
 
 .right-items .item {
-    height: 100%;
+    height: 27px;
     width: 100%;
     white-space: nowrap;
     text-align: center;
-    border: 1px dotted var(--color-white); 
+    vertical-align: middle;
+    border: 1q solid var(--color-white);
+    padding-top: 2px;
 }
 
 .right-items {
@@ -368,17 +380,22 @@ body {
     .right-items {
         grid-column: 2;
         display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        grid-template-rows: repeat(3, 1fr);   
-        gap: 5px;
-        height: 105px;
-        width: 100%;
-        
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        gap: 7px;
+        padding-right: 3px;
+        height: 105px; 
+        width: 100%; 
+        overflow-y: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: none; 
+        scrollbar-width: 1px;
     }
+    
 
     .right-items .item {
         width: 100%;
-        height: 100%;
+        height: 30px;
         margin: 0;
         display: flex;
         align-items: center;
@@ -754,5 +771,32 @@ button {
   margin: 0px;
   cursor: pointer;
   font-family: "Pixelated MS Sans Serif", sans-serif;
+}
+
+p3 { 
+  border-collapse: separate;
+  background-color: transparent;
+  border-style:dotted;
+  border-width: 0px;
+  border-color: var(--color-white);
+  height: auto;
+  width: initial;
+  display:block;
+  margin-top: 1px;
+}
+
+p3:hover { 
+  border-collapse: separate;
+  margin: 2px;
+  background-color: transparent;
+  border-style:dashed;
+  border-width: 1px;
+  border-color: var(--color-white);
+  height: auto;
+  width: initial;
+  display:block;
+  margin-top: 0px;
+  flex: 1 1 auto;
+
 }
 
