@@ -672,9 +672,8 @@ a.glow:focus {
 .links img {
   vertical-align: middle;
   padding-left: 5px;
-  font-size: clamp(auto, 2.5vw, 12px);
+  height: 17px;
 }
-
 
 
 .links a {
@@ -690,7 +689,6 @@ a.glow:focus {
   margin: 0px;
   text-shadow: var(--color-white) 0px 0px 1px;
   white-space: nowrap;
-  font-size: 1.2em;
   padding-left: 5px;
 }
 
