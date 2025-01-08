@@ -321,7 +321,7 @@ p3:hover {
 }
 
 .right-items .item {
-    height: 28px;
+    height: 30px;
     width: 100%;
     white-space: nowrap;
     text-align: center;
@@ -795,7 +795,7 @@ p3 {
   height: initial;
   width: initial;
   display:block;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 p3:hover { 
@@ -805,7 +805,7 @@ p3:hover {
   border-style:dashed;
   border-width: 1px;
   border-color: var(--color-white);
-  margin-bottom: 0px;
+  padding: 0px;
   flex: 1 1 auto;
   height: 22px;
 }
