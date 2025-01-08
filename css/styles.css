@@ -454,7 +454,10 @@ body {
   height: 100%;
   max-height: 190px;
   font-size:1.4rem;
+  -ms-overflow-style: none; 
+  scrollbar-width: 1px;
 }
+        
 
 .photo-log {
   padding: 5px;
