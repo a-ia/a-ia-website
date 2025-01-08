@@ -24,3 +24,9 @@
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
+
+@media (max-width: 800px) { 
+  .moving-gif {
+    pointer-events: none;
+  }
+}
