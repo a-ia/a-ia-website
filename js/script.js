@@ -47,5 +47,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 500);
         });
     }
+
+    const container = document.querySelector(".stamps");
+    const content = document.querySelector(".stamps-container");
+    let direction = 1; /* 1 = down, -1 = up */
+    let position = 0;
+
+    const step = () => {
+      const containerHeight = container.clientHeight;
+      const contentHeight = content.scrollHeight;
+
+      if (direction === 1 && position + containerHeight >= contentHeight) {
+        direction = -1; /* Reverse when reaching the bottom */
+      } else if (direction === -1 && position <= 0) {
+        direction = 1; /* Reverse when reaching the top */
+      }
+
+      position += direction * 0.4; /* Speed adjustment */
+      content.style.transform = `translateY(-${position}px)`;
+
+      requestAnimationFrame(step);
+    };
+
+    step();
 });
 
