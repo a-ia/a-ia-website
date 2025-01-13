@@ -140,6 +140,14 @@ p3:hover {
     grid-auto-flow: row;
     gap: 0px 0px;
   }
+
+  .dmg-container {
+    pointer-events: none;
+  }
+  
+  .moving-gif {
+    pointer-events: none;
+  }
 }
 
 .Title {
