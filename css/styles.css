@@ -521,7 +521,7 @@ p3:hover {
   border-radius: 5px;
   border: 1px dashed var(--color-grey);
   width: 100%;
-  height: 108px;
+  height: 118px;
 }
 
 .photo-log {
@@ -590,6 +590,7 @@ iframe {
 
 
 .footer-container {
+  height: 80px;
   grid-area: footer-container;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -614,6 +615,7 @@ iframe {
   margin: 0px;
   border-radius: 5px;
   border: 1px solid var(--color-grey);
+  
 }
 
 .links:hover {
@@ -625,8 +627,19 @@ iframe {
   border: 1px dotted var(--color-grey);
   margin: 0px;
 }
+
 .links a {
+  white-space: nowrap;
   font-size: inherit;
+  border-radius: 5px;
+  opacity: 1;
+  padding: 2px;
+  border: 1px dashed var(--color-white);
+  background: url('../images/bgrainbow.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  text-align: center;
 }
 
 .links h2 {
@@ -643,6 +656,12 @@ iframe {
 
 .public-projects a {
   font-size: inherit;
+  border-radius: 5px;
+  opacity: 1;
+  padding: 2px;
+  border: 1px dashed var(--color-white);
+  background: url('../images/bgrainbow.png');
+  background-size: cover;
 }
 
 .public-projects h2 {
@@ -672,11 +691,9 @@ iframe {
 /* Images and Icons */
 .links img {
   vertical-align: middle;
-  padding-left: 5px;
   height: 17px;
   image-rendering: pixelated;
 }
-
 
 /* ========================================= */
 /* =========== Background Styles =========== */
@@ -760,20 +777,30 @@ p3:hover {
 /* List and Bullet Styles */
 .bullet-wrapper {
   display: inline-block;
-  padding-left: 5px;
+  margin: 3px;
 }
 
-#custom-list { 
-  text-align: left;
-  white-space: nowrap;
-  margin: 0px; 
-  padding: 0px;
+
+#custom-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0px;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
 }
 
 #custom-list li {
-  margin: 0px; 
-  padding: 0px;
+    display: flex;
+    align-items: center;
+    gap: 0px; 
 }
+
+.bullet-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
 
 ul {
   list-style-type: none;
@@ -840,4 +867,32 @@ a.glow:hover,
 a.glow:focus {
   color: var(--color-white);
   animation: rainbow-shadow 2s linear infinite;
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* ========== LAST.FM WIDGET ========== */
+/* ==================================== */
+
+.lastfm-widget {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--body-color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  display: grid;
+  grid-template-columns: 64px auto;
+  gap: 0.5rem;
+  margin: 0.75rem auto 0 auto;
+}
+.lastfm-img {
+  border-radius: 0.25rem;
+}
+.lastfm-title {
+  font-size: 0.7rem;
+  margin-bottom: 0.2rem;
 }
