@@ -442,7 +442,7 @@ p3:hover {
   grid-area: main-body;
   border-left: 1px dotted var(--color-white);
   border-right: 1px dotted var(--color-white);
-  border-bottom: 1px solid var(--color-white); 
+  border-bottom: 1px solid var(--color-grey); 
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   grid-template-rows: 2fr 1fr auto;
@@ -579,7 +579,6 @@ iframe {
   overflow-wrap: break-word;
   transition: background 0.5s ease-in-out;
   font-family: "romanceB", sans-serif; 
-
 }
 
 .main-body .main-header {
@@ -649,14 +648,13 @@ iframe {
   width: 100%;
   margin: 0px;
   white-space: nowrap;
-  padding-left: 5px;
   font-family: "romanceB", sans-serif;
 }
 
 
 
 /* Images and Icons */
-.links img {
+.links img, .rss img {
   vertical-align: middle;
   height: 17px;
   image-rendering: pixelated;
