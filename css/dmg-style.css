@@ -17,6 +17,7 @@
 }
 
 .bubble-gif {
+  image-rendering: pixelated;
   position: absolute;
   top: 0;
   left: 100%;
