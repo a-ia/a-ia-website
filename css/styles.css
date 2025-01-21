@@ -743,7 +743,7 @@ p3:hover {
   border-style:dashed;
   border-width: 1px;
   border-color: var(--color-white);
-  height: auto;
+  height: 20px;
   width: initial;
   display:block;
   margin-top: 0px;
