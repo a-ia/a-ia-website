@@ -366,7 +366,6 @@ p3:hover {
      .scroll-content {
          overflow: hidden;
          width: 100%;
-         text-align: left;
          padding-left: 3px;
     }
      .right-items {
@@ -520,6 +519,7 @@ p3:hover {
 .content-container {
   grid-area: content-container;
   grid-row: 2;
+  scrollbar-width: 0px;
   overflow: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -541,18 +541,6 @@ p3:hover {
   width: 100%;
   height: 135px;
   padding: 5px;
-}
-
-.photo-log {
-  padding: 5px;
-  overflow: none;
-  height: 100%;
-}
-
-.iframe-photolog {
-  height: 100%;
-  width: 100%;
-  border-width: 0px;
 }
 
 iframe {
