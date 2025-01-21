@@ -653,7 +653,7 @@ iframe {
   text-align: center;
 }
 
-.links h2 {
+.links h2, .rss h2 {
   border-style: dotted;
   border-width: 0px 0px 1px 0px;
   color: var(--color-white);
