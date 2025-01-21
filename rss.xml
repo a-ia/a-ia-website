@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Sharon's Corner</title>
+    <link>https://a-ia.netlify.app</link>
+    <description>Sharon's Personal Website</description>
+    <language>en-us</language>
+    
+    <item>
+        <title>Hello, World.</title>
+        <link>https://a-ia.netlify.app</link>
+        <description>Initial Launch of my personal website, welcome!</description>
+        <pubDate>Fri, 27 Dec 2024 06:19:00 -0500</pubDate>
+      <guid>https://example.com/blog/?id=10</guid>
+    </item>
+    
+</channel>
+</rss>

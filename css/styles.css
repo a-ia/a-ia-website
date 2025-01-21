@@ -50,7 +50,12 @@
   src: url(/fonts/DeutscheZierschrift-ALOA.ttf) format("truetype");
   font-style: normal;
 }
-Duetsche Zierschrift
+
+@font-face {
+  font-family: "nintendo-ds-bio";
+  src: url(/fonts/Nintendo-DS-BIOS.ttf) format("truetype");
+  font-style: normal;
+}
 
 body, html {
   color: var(--color-white);
@@ -838,32 +843,4 @@ a.glow:hover,
 a.glow:focus {
   color: var(--color-white);
   animation: rainbow-shadow 2s linear infinite;
-}
-
-
-
-
-
-
-
-/* ==================================== */
-/* ========== LAST.FM WIDGET ========== */
-/* ==================================== */
-
-.lastfm-widget {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--body-color-secondary);
-  font-size: 0.9rem;
-  line-height: 1.2;
-  display: grid;
-  grid-template-columns: 64px auto;
-  gap: 0.5rem;
-  margin: 0.75rem auto 0 auto;
-}
-.lastfm-img {
-  border-radius: 0.25rem;
-}
-.lastfm-title {
-  font-size: 0.7rem;
-  margin-bottom: 0.2rem;
 }
