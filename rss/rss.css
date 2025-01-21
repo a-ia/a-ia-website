@@ -1,0 +1,43 @@
+ @font-face {
+     font-family: "romanceA";
+     src: url(../fonts/RomanceA.ttf) format("truetype");
+     font-style: normal;
+}
+ .rss-item {
+     margin-left: auto;
+     margin-right: auto;
+}
+ .rss-date {
+}
+ .rss-description {
+}
+
+@keyframes glowAndSize {
+    0% {
+        font-size: 0.9em;
+        text-shadow: none;
+        text-shadow: 0px !important;
+    }
+    100% {
+        font-size: 1.0em;
+        text-shadow: -1px 1px 3px var(--color-blue-gradient), 
+                     1px 1px 3px var(--color-green-accent),
+                     1px -1px 3px var(--color-blue-gradient),
+                     -1px -1px 3px var(--color-purple-gradient);
+    }
+}
+
+.rss-title {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    font-family: "romanceA", sans-serif;
+    text-decoration: none;
+    color: var(--color-white);
+    letter-spacing: 1pt;
+    transition: all 0.3s ease;
+}
+
+.rss-title:hover {
+    animation: glowAndSize 0.3s forwards ease-in-out;
+}
+
