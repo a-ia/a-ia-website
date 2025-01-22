@@ -6,24 +6,30 @@
   <title>404</title>
   <style>
     body {
-      word-wrap: break-word;
       font-size: 18px;
       color: white;
       background: black;
       text-align: center;
       margin: auto;
-      margin-top: 50px;
-      margin-bottom: 50px;
     }
+
+    html,
+    body,
     .container {
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       width: fit-content;
       margin: 0 auto;
     }
-    pre {
+
+    pre { 
       text-align: left;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
       font-size: 10px;
       width: max-content;
     }
@@ -42,17 +48,15 @@
 
     h1 {
       font-size: 20px;
-      font-family: "romanceA", sans-serif; 
+      font-family: "romanceA", sans-serif;
+      position: absolute;
+      top: 10%;
     }
    
     .return-links {
       position: absolute;
-      left: 50%;
-      top: 150px;
-      transform: translateX(-50%);
       background-color: transparent;
       width: 188px;
-      height: 170px;
       border-radius: 5px;
       z-index: 2;
       margin: 0;
@@ -60,11 +64,12 @@
       box-sizing: border-box;
       font-family: "nintendo-ds-bios", sans-serif;
       color: black;
+      margin-top:-35%;
     }
 
     .return-links a {
-            font-size: 24px;
-          line-height: 35px;
+        font-size: 24px;
+        line-height: 35px;
     }
 
     * {
@@ -76,9 +81,8 @@
   </style>
 </head>
 <body>
-  <h1>if not found, please return to...</h1>
-  
   <div class="container">
+  <h1>if not found, please return to...</h1>
     <div class="return-links">
         <a href="javascript:history.back()">Previous</a><br>
         <a href="index.html">Home Page</a><br>
