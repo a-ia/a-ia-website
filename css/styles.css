@@ -743,11 +743,15 @@ p3:hover {
   border-style:dashed;
   border-width: 1px;
   border-color: var(--color-white);
-  height: 20px;
   width: initial;
   display:block;
   margin-top: 0px;
   flex: 1 1 auto;
+}
+
+#rss-feed {
+  height: 110px;
+  overflow-y: auto;
 }
 
 * {
