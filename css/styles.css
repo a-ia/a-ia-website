@@ -661,6 +661,12 @@ iframe {
   image-rendering: pixelated;
 }
 
+  .fun .imgCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 /* ========================================= */
 /* =========== Background Styles =========== */
 /* ========================================= */
