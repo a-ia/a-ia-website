@@ -446,11 +446,6 @@ p3:hover {
   border-bottom-right-radius: 5px;
   overflow: hidden;
   transition: transform 0.6s, height 0.6s, width 0.6s;
-  grid-template-rows: 
-    "description"
-    "content-container"
-    "footer-container"
-    "dmg-container";
 }
 
 .description {
@@ -462,17 +457,15 @@ p3:hover {
   overflow-x: none; 
   height: 122px;
   font-size:1.2rem;
-  -ms-overflow-style: none; 
-  scrollbar-width: 1px;
+  scrollbar-width: none;
 }
 
 
 .intro {
-    -ms-overflow-style: none;
     height: 122px;
     overflow-x: hidden;
     overflow-y: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     width: 100%;
     border-left: 1px dashed var(--color-white);
     padding-left: 5px;

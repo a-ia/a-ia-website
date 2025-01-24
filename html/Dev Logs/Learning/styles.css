@@ -1,0 +1,150 @@
+:root {
+  /* Base colors */
+  --color-white: #fff;
+  --color-pink: pink;
+  --color-grey: #ddd;
+
+  /* Main gradient colors */
+  --color-pink-gradient: #e297b2;
+  --color-purple-gradient: #c0b4d5;
+  --color-blue-gradient: #9acde2;
+  --color-green-accent: #CAD6B6;
+
+  /* Deep Gradient colors */
+  --color-deep-red-gradient: #2d0809;
+  --color-deep-blue-gradient: #262047;
+  --color-deep-violet-gradient: #32174d;
+
+  /* Text shadow colors */
+  --color-purple-glow: #dbbdf9;
+
+  /* Accent colors */
+  --color-fairypink: #f29ddf;
+
+  /* New variables */
+  --link-color: #f52e62;
+  --hr-color: white;
+  --letter-spacing: 0.32em;
+  --background-color: #fff;
+}
+
+@font-face {
+  font-family: "nintendo-ds-bios";
+  src: url(/fonts/Nintendo-DS-BIOS.ttf) format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Saitamaar";
+  src: url(/fonts/Saitamaar.ttf) format("truetype");
+  font-style: normal;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: "nintendo-ds-bios", sans-serif;
+}
+
+
+/* Styling for horizontal rules and associated headings */
+hr {
+  display: block;
+  margin: 50px 0 -15px;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: var(--hr-color);
+}
+
+hr + h2 {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 5px 8px;
+  border: 1px solid var(--hr-color);
+  transform: translateX(-50%);
+  color: var(--hr-color);
+  font-size: 16px;
+  letter-spacing: var(--letter-spacing);
+  text-align: center;
+  text-transform: uppercase;
+  background-color: black;
+}
+
+hr + h2::first-letter {
+  margin-left: var(--letter-spacing);
+}
+
+hr + h2 {
+  border-width: 1px 0;
+  position: relative;
+}
+
+hr + h2::before,
+hr + h2::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--hr-color);
+  content: '';
+}
+
+hr + h2::before {
+  left: 0;
+}
+
+hr + h2::after {
+  right: 0;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+        .aa {
+            font-family: Saitamaar, serif !important;
+            line-height: 18px;
+            font-size: 16px;
+            overflow: auto;
+            color:white;
+            overflow: hidden;
+        }
+
+        .w-100 {
+            width: 100% !important;
+        }
+        .border-md {
+            border-width: 1px !important;
+            border-style: solid !important;
+        }
+        textarea {
+            background-color: transparent;
+            border-style: none;
+            font: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            font-family: inherit;
+            overflow: auto;
+            overflow: hidden; 
+            resize: none;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            margin-top: 0px;
+        }
+        *, ::before, ::after {
+            background-repeat: no-repeat;
+            box-sizing: inherit;
+        }
