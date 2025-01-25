@@ -12,60 +12,93 @@
 
   <!-- First Row -->
   <div style="grid-column: span 2; height: 50px; border: 1px solid black;">
-    <!-- Empty space in the first row -->
+    <!-- content of first row -->
   </div>
 
-  <!-- Second Row -->
+  <!-- second Row -->
+
   <div style="height: 100%; width: 200px;">
-        <hr>
-        <h2>Navigation</h2>
-        <p>Data Structures and Algorithms<p><br>
-        <p>C++<p><br>
-        <p>Game Development<p><br>
-        <p>Web Development<p><br>
-        <p>Tutorials<p><br>
-      </div>
+      <hr>
+      <h2>Navigation</h2>
+
+  <nav>
+    <ul>
+      <li class="menu-item">
+        <a href="#" onclick="toggleMenu(event)">Personal</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="loadContent('Extended About')">Extended About</a></li>
+          <li><a href="#" onclick="loadContent('Photolog')">Photolog</a></li>
+          <li><a href="#" onclick="loadContent('Journal')">Journal</a></li>
+          <li><a href="#" onclick="loadContent('Substack')">Substack</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="#" onclick="toggleMenu(event)">Media Logs</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="loadContent('Music')">Music</a></li>
+          <li><a href="#" onclick="loadContent('Video Games')">Video Games</a></li>
+          <li><a href="#" onclick="loadContent('Literature')">Literature</a></li>
+          <li><a href="#" onclick="loadContent('TV')">TV</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="#" onclick="toggleMenu(event)">Dev Logs</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="loadContent('Dev Blog')">Dev Blog</a></li>
+          <li><a href="#" onclick="loadContent('Projects')">Projects</a></li>
+          <li class="menu-item">
+            <a href="#" onclick="toggleMenu(event)">Learning</a>
+            <ul class="submenu">
+              <li><a href="#" onclick="loadContent('Data Structs and Algos')">Data Structs and Algos</a></li>
+              <li><a href="#" onclick="loadContent('C++')">C++</a></li>
+              <li><a href="#" onclick="loadContent('Game Development')">Game Development</a></li>
+              <li><a href="#" onclick="loadContent('Web Development')">Web Development</a></li>
+              <li><a href="#" onclick="loadContent('Tutorials')">Tutorials</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <!--<li><a href="#">Contact</a></li>-->
+    </ul>
+  </nav> 
+  </div>
 
   <div style="height: 100%; width: 800px; margin-left: -205px; overflow: none;">
-    <!-- Empty space for the second column of the second row -->
+        <!-- second column of the second row -->
 
 
-    <textarea 
+      <textarea disabled   
+        id="ascii-art"
         class="w-100 aa border-md" 
         wrap="off" 
-        rows="25">　　　　　　　　　　　　　　　　　　　 j}|′　　　　　 ,　　　, 　 }　　 i{|　 ,}}　　　　 ,j|　 l|　　　,　　　　　　　　　　｛|　　　¨''ｬ,ミii,,_
-　　　　　　　　　　　　　　　　　 　 j{|{　　　　　 　 |}　　 }} i|]|　　,_||　 ,{　 i|'　 *|{{||　 l|| l|　 l|| *　　l|　　 * 　 　 ||　　　　 ｀寸|il|ｉiｘ,*
-　　　　　　　　　　　　　　　　　　 j|||{　i|　 , 　 　 ||　i|| {| l||| 　 j||||　 ||　i|| 　 |||||||　 || l|　 l||||| l 　|||　,]|　　　 l| ii　　　　　'''抖ｋ]lｋx
-　　　　　　　　　　　　　　　 　 　 |||{|ｉ l||　i|| :||　 || ,i|| ||| |||　| _||||　 ||　i||ｉｉ　||||||||　 l|| l| 　]|||| ||　|||| ||||　　　 {|| ｀､　　　　　 ﾟ'%{ｋi''
-　　　　　　　　　　　　　　 　 　 ,,i||||||| ||　 || l| 　l|| ||| ||| |||| i| i|||||　|||　|||||i ||||| || 　 || [ 　 |||||[|_ l||| ,||||　　 　 l|i''''~~~lik,_　　　 ｀''iij
-　　　　　　　　　　　　　　 　 ,,,l《' ||| |||||　 || |||　l|| ||| ||| |||| || l||||　i|||　||||　||||| |||　 :|| [ 　 ||||||||, |||| {||　　 , 　 《　　　ﾟ'i|'}|　　　　　′
-　　　　　　　　　　　　　 　 ,,j{ﾞ 　 ||||||| |　|||| || :, | ]|| ||| ]||| || {||||i ||||| ||||| ' |||||||||　|{|||[|| _|||||,||| |||| ,|||　　l|| 　 l||　　　　j}
-　　　　　　　　　　　　　　 j{{′　 || ]|| {| :{||| ┃l l| ||| ||| ]||| || || || || [| || ||　|l||||||| _||||||||| ||||||||| {| | i{|| i　 i||　 ||||,,,,,,,,,,,,''′　　　　,,
-　　　　　　　　　　　 　 　 《{_　　 ''| ]|　,|　{|　 l|　|| || |||l||||||_|,,]|,_| || || || || l|_|||]|||,i||ｘ|,||||||||||||||||||| ,||||i|　 l||　 l|| {|　　　　　　　,,,,,''′
-　　　　　　　　　　　　　　　'込,_　　 ||iii }ｉ ,ﾐ　;ｷ| 《,|》||||'ll||{l|_ l{|||||||| {{||||||i{|||{||{|||l|　l||ｉ|i||l|||||||||||||ii{]||| 　_||　　l|| l|　　　　 ,,,,,''''′ i
-　　　　　　　　　　　　　　　 '寸iiil,,_ [||{{{{|　 l{{{|| :l{|{{{{|| ll|_l》ｌi{|||||'|||　{{||||{{|||'{i l{||li'',{||||,,,,,,,i{ ,{| l||||||||||,i　|| 　　,|| ,l||,,,,,,,r''''''''　　,,,jj|
-　　　　　　　　　　　　　　　　　''''宀k''{l{{,,l|| 》|]{辷|{|||ll|{{{||'''''''''l}|li| '}{　 {|||{ {{|　 {' i'''''''{{|'''''''''''''ll,'||_||||||i}| ,{| ｉ　 | || _|||''　　　,,,,,,r'~′
-　　　　　　　　　　　　　　　　　　　｀¨''x､ ￣||||[|{|}{{》||ﾟ　'☆ｘｘ炒　　　　｀　　　　 　 　 ☆x,,,,,,,l''''ii|||l||i|| iii||||　,i||||||||||,,,,,,r,''''¨´
-　　　　　　　　　　　　　　　　　　　　　　｀¨'|| {||| |||r''{{,,　　　　　　　　　　　　　　　　　　　　　　 ,j|||{ |{ﾞ {{||,|ﾞ　,|| l||||| ||
-　　　　　　　　　　　　　　　　　　　　　　　 i|| ||| |||　 j}ﾞ%,　　　　　　　 .,,　　　　　　　　　　　　 ,,j{|{| ,{|　,{||}| ,/　 i|| |||||
-　　　　　　　　　　　　　　　　　　　　　　　 i|| ||l,'{′ }{　 {ﾄ,,　　　 　　　'　　　　　　　　　　 　 {||j|| ii|　ｲ }||/　　,{||j| |}|
-　　　　　　　　　　　　　　　　　　　　　　 　:[| |'′　j{′ ji' 'ﾟ'iｘ,,　　　　　　.,,,x,,　　　　　　 　 jj{i{{|| ||| ,j| {{/　　 /,,{|jji′
-　　　　　　　　　　　　　　　　 . ｘ'ii,ｘ,_　　,j||ﾞ',_　*{{ 　 i||　　,i{＾i'x｡,*　　　　　　　　　　　 　 j| ii||||'「| j{ ,}}　　　　　j{′
-　　　　　　　　　　　　　　　 　 　 || }ｉ 》|　 i{|　｀｀,}{ ,,　*{|　　i{|　]|　'''''''ｘ,,,*　　　　　 　 ,,,,,r''{{ l{||ll||,,,_,　,{!　 ,_,,,,r'''′
-　　　　　　　　　　　　　　　 　 　 l||||　||| _||　　 :,}| 　 ,}} vｘ i]|　,|, ,,,,,,'' '''¨¨'━,,,,,,,,,,,,f''~'　　《x|||ll||l'l||炒x,,,,㌻
-　　　　　　　　　　　　　　　 　 　 ||　　 '|||||　　 :l|　　,j|　 　 l{ 　{| ~　　　　　　¨¨　　　　　　　 　 　 ||　'''''''
-　　　　　　　　　　　　　　　 　 　 《|　　 {{{| ､,,__,{|　 ,j{′　,从'% j|　　　　　　　　　　　　　　　 　 　 j||ix_,,,,,,
-　　　　　　　　　　　　　　　　　 　 ||　　 {{ 　　 　 ¨ '″　 ,i{{|　 ,||　　　　　　　　　　　　　　　　 　 i{i|||''=ll|||,
-　　　　　　　　　　　　　　　　　 　 ||　　　' 、　　　 　 　 `'ﾞ'､_　{|　　　　　　　　　　　　　　　　　 ,i{| ||　 || ||,
-　　　　　　　　　　　　　　　　　 　 [|　　　　　＼　　　　　　　　 {|　　　　　　　　　　　　　　　　　 ii| j|　　:|| ||,,
-        
-
+        rows="25">
       </textarea>
       </div>
 
 </div>
 
+        <script src="script.js"></script>
 
-</body>
+   <script>
+    function toggleMenu(event) {
+      event.preventDefault();
+      const parent = event.target.closest('.menu-item');
+      if (parent) {
+        parent.classList.toggle('expanded');
+      }
+    }
+
+    function loadContent(content) {
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = `<div>${content}</div>`;
+    }
+
+    window.addEventListener('load', () => {
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = ''; // resets to empty
+      contentDiv.appendChild(document.getElementById('ascii-art'));
+    });
+  </script>   
+  </body>
 </html>
 
