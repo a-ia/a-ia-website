@@ -406,7 +406,7 @@ div.navigation.border {
   }
 
   .border-md {
-   border-width: 1px 0 !important;
+   border-width: 1px 0 0 !important;
   }
 
   .aa {
@@ -421,7 +421,6 @@ div.navigation.border {
   .margin {
   margin-top:0px;
   margin-left: 0px;
-  height: 100%;
   padding: 10px;
   }
 }
