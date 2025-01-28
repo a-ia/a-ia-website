@@ -5,7 +5,15 @@
     <link>https://a-ia.netlify.app</link>
     <description>Sharon's Personal Website</description>
     <language>en-us</language>
+
+    <item>
+        <title>Content Log</title>
+      <link>https://a-ia.netlify.app/html/</link>
+        <description>My online clutter receptacle is out!</description>
+        <pubDate>Tue, 28 Jan 2025 12:20:00 -0500</pubDate>
+    </item>
     
+
     <item>
         <title>Hello, World.</title>
         <link>https://a-ia.netlify.app</link>
