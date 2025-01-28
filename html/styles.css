@@ -41,6 +41,7 @@
      color: white;
      font-family: "nintendo-ds-bios", sans-serif;
 }
+
 /* Styling for horizontal rules and associated headings */
  hr {
      display: block;
@@ -89,10 +90,21 @@
  hr + h2::after {
      right: 0;
 }
+
+nav ul li a2:hover {
+  text-decoration: none;
+}
+
+a2 {
+     color: white;
+     text-decoration: none;
+}
+
  a {
      color: var(--link-color);
      text-decoration: none;
 }
+
  a:focus, a:hover {
      text-decoration: underline;
 }
@@ -102,14 +114,15 @@
     width: 800px; 
     margin-left: -200px; 
     overflow: none;
+    font-size: 1.5rem;
 }
 
 .margin {
-  margin-top:0px;
-  margin-left: 200px;
+  margin-left: 210px;
   height: 100%;
-  border-left: 1px solid grey;
+  margin-top: 10px
 }
+
  .aa {
      font-family: Saitamaar, serif !important;
      line-height: 18px;
@@ -146,12 +159,7 @@
      background-repeat: no-repeat;
      box-sizing: inherit;
 }
- p {
-     font-size: 1.5rem;
-     position:relative;
-     margin-left: 10px;
-     z-index: 2;
-}
+
  nav {
      font-size: 1.5rem;
      margin-left: 10px;
@@ -161,14 +169,12 @@
      overflow-x: hidden;
      overflow-y: auto;
      scrollbar-width: none;
+     line-height: 1.9rem;
 }
  nav ul {
      list-style: none;
      padding: 0;
      margin: 0;
-}
- nav ul li {
-     margin-bottom: 8px;
 }
  nav ul li a {
      display: block;
@@ -193,7 +199,6 @@
 }
  .expanded .submenu {
      display: block;
-     padding-top: 5px;
 }
 
 .terminal-title { 
@@ -260,6 +265,10 @@
   gap: 0;
 }
 
+div.navigation.border {
+    border-right: 1px solid grey;
+}
+
 @media (max-width: 800px) {
   body > div {
     display: grid;
@@ -293,6 +302,8 @@
   /* Navigation row */
   nav .menu-item.expanded > .submenu {
     display: block;
+    overflow: auto;
+    scrollbar-width: none;
   }
 
   nav {
@@ -303,10 +314,12 @@
     white-space: nowrap;
     height: auto;
     max-height: none;
+    line-height: unset;
   }
 
   .navigation {
     width: 100%;
+    padding-bottom: 10px;
   }
   
   nav > ul {
@@ -409,8 +422,7 @@
   margin-top:0px;
   margin-left: 0px;
   height: 100%;
-  border-left: 0px solid grey;
-  padding: 5px;
+  padding: 10px;
   }
 }
 

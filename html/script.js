@@ -140,11 +140,20 @@ function loadContent(contentKey) {
         })
         .then(html => {
             contentDiv.innerHTML = html;
+            borderNavigationDiv();
         })
         .catch(error => {
             console.error(error);
-            contentDiv.innerHTML = "<div class=\"margin\"><h2>&nbsp;&nbsp;Error</h2><p>Could not load the content. Please try again later.</p></div>";
+            contentDiv.innerHTML = "<div class=\"margin\"><h2>Error</h2><br><p>Could not load the content. Please try again later.</p></div>";
         });
+
+  function borderNavigationDiv() {
+    const navigationDiv = document.querySelector('.navigation');
+
+    if (navigationDiv) {
+        navigationDiv.classList.add('border');
+    }
+  }
 }
 
 // Note: handles browser navigation events (back/forward) using popstate event listener by loading content based on the URL hash
