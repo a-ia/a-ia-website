@@ -333,6 +333,7 @@
     max-height: 60%; /* stop overflowing */
     width: 60%;
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
     nav .submenu .submenu {

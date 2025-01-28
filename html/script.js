@@ -126,7 +126,7 @@ function toggleMenu(event) {
 function loadContent(contentKey) {
     const contentDiv = document.getElementById('content');
     const normalizedKey = contentKey.toLowerCase().replace(/\s+/g, '-');
-    const filePath = `html/${normalizedKey}.html`; // Note: enable direct linking for htmls
+    const filePath = `page/${normalizedKey}.html`; // Note: enable direct linking for htmls
     
     // Note: history.pushState() updates browser URL without page reload
     history.pushState(null, '', `#${normalizedKey}`);
