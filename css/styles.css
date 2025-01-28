@@ -749,6 +749,7 @@ p3:hover {
 #rss-feed {
   height: 110px;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 * {
