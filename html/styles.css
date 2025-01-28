@@ -282,6 +282,10 @@
     grid-column: 1;
   }
 
+  hr{
+    margin: 20px 0 -15px;
+  }
+
   hr + h2 {
     font-size: 1.4rem;
   }
