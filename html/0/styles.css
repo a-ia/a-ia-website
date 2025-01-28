@@ -21,7 +21,11 @@
      --hr-color: white;
      --letter-spacing: 0.32em;
      --background-color: #fff;
+
+  --phoneWidth: (max-width: 684px);
+  --tabletWidth: (max-width: 900px);
 }
+ 
  @font-face {
      font-family: "nintendo-ds-bios";
      src: url(/fonts/Nintendo-DS-BIOS.ttf) format("truetype");
@@ -56,7 +60,8 @@
      border: 1px solid var(--hr-color);
      transform: translateX(-50%);
      color: var(--hr-color);
-     font-size: 16px;
+     font-size: 1.2rem;
+  font-weight: lighter;
      letter-spacing: var(--letter-spacing);
      text-align: center;
      text-transform: uppercase;
@@ -93,11 +98,14 @@
 }
 
 #content {
-
+    height: 100%; 
+    width: 800px; 
+    margin-left: -200px; 
+    overflow: none;
 }
 
 .margin {
-  margin-top:4px;
+  margin-top:0px;
   margin-left: 200px;
   height: 100%;
   border-left: 1px solid grey;
@@ -139,12 +147,14 @@
      box-sizing: inherit;
 }
  p {
+     font-size: 1.5rem;
      position:relative;
      margin-left: 10px;
      z-index: 2;
 }
  nav {
-     margin-left: 5px;
+     font-size: 1.5rem;
+     margin-left: 10px;
      z-index: 100;
      position: relative;
      height: 380px;
@@ -185,3 +195,217 @@
      display: block;
      padding-top: 5px;
 }
+
+.terminal-title {
+  font-size: 24px;
+  display: flex;
+  height:100%;
+  align-items: flex-start;
+  position: relative;
+}
+
+
+.terminal-title span {
+  position: relative;
+}
+
+.terminal-title h1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 3px;
+    font-size: 26px;
+}
+
+.cursor {
+  width: 10px;
+  height: 16px;
+  background-color: var(--link-color);
+  margin-left: 5px;
+  margin-top: 1px;
+  animation: blink 1s infinite; 
+  position: relative;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.navigation {
+  height: 100%;
+  width: 200px;
+}
+
+.grid {
+  display: grid; 
+  position: relative; 
+  grid-template-rows: 50px 1fr; 
+  grid-template-columns: 200px 600px; 
+  width: 800px; 
+  margin: 0 auto; 
+  height: fit-content; 
+  gap: 0;
+}
+
+@media (max-width: 800px) {
+  body > div {
+    display: grid;
+    grid-template-rows: 50px auto auto auto;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+    gap: 0px;
+    position: relative;
+  }
+
+  .grid {
+    grid-template-rows: auto; 
+    grid-template-columns: 1fr; 
+    width: 100%; 
+  }
+  
+  /* First row remains unchanged */
+  body > div > div:first-child {
+    grid-column: 1;
+  }
+
+  hr + h2 {
+    font-size: 1.4rem;
+  }
+  
+  /* Navigation row */
+  nav .menu-item.expanded > .submenu {
+    display: block;
+  }
+
+  nav {
+    grid-row: 2;
+    width: 100%; 
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: auto;
+    max-height: none;
+  }
+
+  .navigation {
+    width: 100%;
+  }
+  
+  nav > ul {
+    font-size: 1.6rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    list-style: none;
+  }
+ 
+  nav .menu-item {
+    position: relative;
+  }
+  
+  nav .submenu {
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: black;
+    color: white;
+    border: 1px solid var(--hr-color);
+    z-index: 1;
+    max-height: 60%; /* stop overflowing */
+    width: 60%;
+    overflow-y: auto;
+  }
+
+    nav .submenu .submenu {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-height: none;
+    border: none;
+    padding: 0;
+    margin-left: 2rem;
+    border-radius: 4px;
+  }
+
+    nav .submenu > li {
+    padding: 0.5rem 0; /* spacing between menu items */
+    }
+
+    /* Submenu nested within submenu */
+    nav .submenu > .menu-item > .submenu {
+    display: block; /* show */
+    }
+
+    .menu-item.expanded > .submenu {
+    display: block; /* show */
+    }
+
+    /* Expanded nested submenu */
+    .menu-item.expanded > .submenu > .menu-item.expanded > .submenu {
+    display: block; /* show */
+    }
+
+  .mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .mobile-menu-overlay.active {
+    display: block; /* show when active */
+  }
+
+  #content {
+    grid-row: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .border-md {
+   border-width: 1px 0 !important;
+  }
+
+  .aa {
+     font-family: Saitamaar, serif !important;
+     line-height: 2.8vw;
+     font-size: 2.6vw;
+     overflow: auto;
+     color:white;
+     overflow: hidden;
+  }
+
+  .margin {
+  margin-top:0px;
+  margin-left: 0px;
+  height: 100%;
+  border-left: 0px solid grey;
+  padding: 5px;
+  }
+}
+
+

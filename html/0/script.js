@@ -3,11 +3,30 @@ const textarea = document.getElementById('ascii-art');
 let frames = [];
 let currentFrameIndex = 13;
 let animationInterval;
+let isMobileView = false;
+
+// Function to check if in mobile view
+function checkMobileView() {
+    return window.innerWidth <= 768 && window.innerWidth > 0;
+}
+
+// Function to trim first 12 characters from each line of frames for mobile view
+function trimFramesForMobile(originalFrames) {
+    return originalFrames.map(frame => {
+        const lines = frame.split('\n');
+        
+        const trimmedLines = lines.map(line => 
+            line.length > 12 ? line.slice(12) : line
+        );
+        
+        return trimmedLines.join('\n');
+    });
+}
 
 // Function to load ASCII frames from text files
 async function loadFrames() {
     try {
-        const frames = [];
+        const loadedFrames = [];
         for (let i = 1; i <= 33; i++) {
             console.log(`Fetching: ./ascii/${i}.txt`);
             const response = await fetch(`./ascii/${i}.txt`);
@@ -18,10 +37,13 @@ async function loadFrames() {
             }
             
             const frame = await response.text();
-            frames.push(frame);
+            loadedFrames.push(frame);
         }
-        console.log(`Loaded ${frames.length} frames`);
-        return frames;
+        console.log(`Loaded ${loadedFrames.length} frames`);
+        
+        // Check if in mobile view and trim frames if necessary
+        isMobileView = checkMobileView();
+        return isMobileView ? trimFramesForMobile(loadedFrames) : loadedFrames;
     } catch (error) {
         console.error('Error loading frames:', error);
         return [];
@@ -45,20 +67,59 @@ function stopAnimation() {
     }
 }
 
+// Resize event listener to handle mobile view changes
+window.addEventListener('resize', () => {
+    const newMobileView = checkMobileView();
+    
+    if (newMobileView !== isMobileView && frames.length > 0) {
+        isMobileView = newMobileView;
+        
+        // Re-trim or restore frames based on current view
+        frames = isMobileView ? trimFramesForMobile(frames) : frames;
+        
+        // Update current frame display
+        textarea.value = frames[currentFrameIndex];
+    }
+});
+
 // SECTION 2: Navigation Menu Functionality
 function toggleMenu(event) {
-    event.preventDefault();
-    const parent = event.target.closest('.menu-item');
-    if (parent) {
-        parent.classList.toggle('expanded');
-    }
-}
+  event.preventDefault();
 
-// A very OCD typed function, to adjust the content height by +1px to match the extra textarea height
-function adjustContentHeight() {
-    const contentDiv = document.getElementById('content');
-    const currentHeight = parseInt(window.getComputedStyle(contentDiv).height, 10);
-    contentDiv.style.height = `${currentHeight + 1.1}px`;
+  // Get the closest menu item
+  const parentMenu = event.target.closest('.menu-item');
+  
+  if (parentMenu) {
+    const submenu = parentMenu.querySelector('.submenu');
+
+    // Toggle the 'expanded' class for the clicked menu
+    if (submenu) {
+      const isExpanded = parentMenu.classList.contains('expanded');
+      parentMenu.classList.toggle('expanded');
+
+      // document-wide click listener to close the menu from whereever
+      const closeMenu = (e) => {
+        if (!parentMenu.contains(e.target)) {
+          parentMenu.classList.remove('expanded');
+          document.removeEventListener('click', closeMenu);
+        }
+      };
+
+      // if menu is expanding, set up click listener
+      if (!isExpanded) {
+        setTimeout(() => {
+          document.addEventListener('click', closeMenu);
+        }, 0);
+      }
+    }
+
+    // Close all other expanded menus
+    document.querySelectorAll('.menu-item.expanded').forEach((item) => {
+      if (item !== parentMenu) {
+        item.classList.remove('expanded');
+      }
+    });
+  }
 }
 
 // SECTION 3: Dynamic Content Loading
@@ -79,7 +140,6 @@ function loadContent(contentKey) {
         })
         .then(html => {
             contentDiv.innerHTML = html;
-            adjustContentHeight();
         })
         .catch(error => {
             console.error(error);
@@ -123,3 +183,4 @@ window.addEventListener('load', () => {
     contentDiv.innerHTML = '';
     contentDiv.appendChild(textarea);
 });
+

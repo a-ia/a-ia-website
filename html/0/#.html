@@ -10,17 +10,17 @@
 
 <body>
 
-  <div
-    style="display: grid; grid-template-rows: 50px 1fr; grid-template-columns: 200px 600px; width: 800px; margin: 0 auto; height: fit-content;">
-
+  <div class="grid">
     <!-- First Row -->
-    <div style="grid-column: span 2; height: 50px; border: 1px solid black;">
-      <!-- content of first row -->
+    <div style="grid-column: span 2; height: 50px; border: 1px solid black; display: inline-block;">
+    <div class="terminal-title">
+          <h1><span>&gt; $ echo Hello World!</span><span class="cursor"></span><h1>
+    </div>
     </div>
 
     <!-- second Row -->
 
-    <div style="height: 100%; width: 200px;">
+    <div class="navigation">
       <hr>
       <h2>Navigation</h2>
 
@@ -44,31 +44,29 @@
               <li><a href="#" onclick="loadContent('TV')">TV</a></li>
             </ul>
           </li>
-          <li class="menu-item">
-            <a href="#" onclick="toggleMenu(event)">Dev Logs</a>
-            <ul class="submenu">
-              <li><a href="#" onclick="loadContent('Dev Blog')">Dev Blog</a></li>
-              <li><a href="#" onclick="loadContent('Projects')">Projects</a></li>
-              <li class="menu-item">
-                <a href="#" onclick="toggleMenu(event)">Learning</a>
-                <ul class="submenu">
-                  <li><a href="#" onclick="loadContent('Data Structs and Algos')">Data Structs and Algos</a></li>
-                  <li><a href="#" onclick="loadContent('C++')">C++</a></li>
-                  <li><a href="#" onclick="loadContent('Game Development')">Game Development</a></li>
-                  <li><a href="#" onclick="loadContent('Web Development')">Web Development</a></li>
-                  <li><a href="#" onclick="loadContent('Tutorials')">Tutorials</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <!--<li><a href="#">Contact</a></li>-->
-        </ul>
-      </nav>
+<li class="menu-item">
+  <a href="#" onclick="toggleMenu(event)">Dev Logs</a>
+  <ul class="submenu">
+    <li><a href="#" onclick="loadContent('Dev Blog')">Dev Blog</a></li>
+    <li><a href="#" onclick="loadContent('Projects')">Projects</a></li>
+    <li class="menu-item">
+      <a href="#" onclick="toggleMenu(event)">Learning</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="loadContent('Data Structs and Algos')">Data Structs and Algos</a></li>
+        <li><a href="#" onclick="loadContent('C++')">C++</a></li>
+        <li><a href="#" onclick="loadContent('Game Development')">Game Development</a></li>
+        <li><a href="#" onclick="loadContent('Web Development')">Web Development</a></li>
+        <li><a href="#" onclick="loadContent('Tutorials')">Tutorials</a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</ul>
+        </nav>
     </div>
 
-    <div id="content" class="border-md" style="height: 100%; width: 800px; margin-left: -200px; overflow: none;">
+      <div id="content" class="border-md">
       <!-- second column of the second row -->
-
       <textarea disabled id="ascii-art" class="w-100 aa" wrap="off" rows="25">
       </textarea>
 
