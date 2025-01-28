@@ -184,3 +184,16 @@ window.addEventListener('load', () => {
     contentDiv.appendChild(textarea);
 });
 
+
+// SECTION 5: MISC
+function refreshPath() {
+    const currentPath = window.location.pathname;
+    const hasIndexHtml = currentPath.endsWith('index.html');
+    const basePath = currentPath.split('#')[0];
+    
+    if (hasIndexHtml) {
+        window.location.href = basePath;
+    } else {
+        window.location.href = basePath + 'index.html';
+    }
+}

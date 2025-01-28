@@ -196,7 +196,7 @@
      padding-top: 5px;
 }
 
-.terminal-title {
+.terminal-title { 
   font-size: 24px;
   display: flex;
   height:100%;
@@ -207,6 +207,7 @@
 
 .terminal-title span {
   position: relative;
+  cursor: pointer;
 }
 
 .terminal-title h1 {
