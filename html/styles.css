@@ -42,6 +42,15 @@
      font-family: "nintendo-ds-bios", sans-serif;
 }
 
+#ascii-art {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+#ascii-art.visible {
+    opacity: 1;
+}
+
 /* Styling for horizontal rules and associated headings */
  hr {
      display: block;

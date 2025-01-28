@@ -47,7 +47,14 @@ async function loadFrames() {
 
         // Check if in mobile view and trim frames if necessary
         isMobileView = checkMobileView();
-        return isMobileView ? trimFramesForMobile(loadedFrames) : loadedFrames;
+        frames = isMobileView ? trimFramesForMobile(loadedFrames) : loadedFrames;
+
+        // Ascii fade-in on intial load
+        setTimeout(() => {
+            textarea.classList.add('visible');
+        }, 100);
+
+      return frames;
     } catch (error) {
         console.error('Error loading frames:', error);
         return [];
