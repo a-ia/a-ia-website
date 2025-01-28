@@ -1,5 +1,6 @@
 // SECTION 1: ASCII Animation Functionality
 const textarea = document.getElementById('ascii-art');
+let originalFrames = [];
 let frames = [];
 let currentFrameIndex = 13;
 let animationInterval;
@@ -41,6 +42,9 @@ async function loadFrames() {
         }
         console.log(`Loaded ${loadedFrames.length} frames`);
         
+        // Store original frames for restore
+        originalFrames = [...loadedFrames];
+
         // Check if in mobile view and trim frames if necessary
         isMobileView = checkMobileView();
         return isMobileView ? trimFramesForMobile(loadedFrames) : loadedFrames;
@@ -75,7 +79,7 @@ window.addEventListener('resize', () => {
         isMobileView = newMobileView;
         
         // Re-trim or restore frames based on current view
-        frames = isMobileView ? trimFramesForMobile(frames) : frames;
+        frames = isMobileView ? trimFramesForMobile(originalFrames) : [...originalFrames];
         
         // Update current frame display
         textarea.value = frames[currentFrameIndex];
