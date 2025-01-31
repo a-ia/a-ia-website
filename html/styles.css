@@ -529,6 +529,8 @@
      color: var(--color-fairypink);
      font-weight: 500;
 }
+
+/* Header nav buttons */
  .nav-buttons {
      display: flex;
      align-items: flex-start;
@@ -578,7 +580,12 @@
      .social-dropdown {
          top: calc(100% - -23px);
     }
+
+     .nav-buttons {
+         margin-right: 0px;
+    }
 }
+
  .social-dropdown.show {
      display: block;
 }
