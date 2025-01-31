@@ -1,4 +1,4 @@
-// SECTION 1: ASCII Animation Functionality
+/// SECTION 1: ASCII Animation Functionality
 const textarea = document.getElementById('ascii-art');
 let originalFrames = [];
 let frames = [];
@@ -151,13 +151,13 @@ function loadContent(contentKey) {
         })
         .then(html => {
             contentDiv.innerHTML = html;
-            borderNavigationDiv();
-        })
+             borderNavigationDiv();
+       })
         .catch(error => {
             console.error(error);
             contentDiv.innerHTML = "<div class=\"margin\"><h2>Error</h2><br><p>Could not load the content. Please try again later.</p></div>";
-            navigationDiv.classList.add('border');
-        });
+             borderNavigationDiv();
+       });
 
   function borderNavigationDiv() {
     const navigationDiv = document.querySelector('.navigation');
@@ -218,3 +218,21 @@ function refreshPath() {
         window.location.href = basePath + 'index.html';
     }
 }
+  /* Button, drop down for sidebar */
+        const socialsBtn = document.querySelector('.socials-button');
+        const chevron = document.querySelector('.chevron');
+        const dropdown = document.querySelector('.social-dropdown');
+
+        socialsBtn.addEventListener('click', () => {
+            chevron.classList.toggle('open');
+            dropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!socialsBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                chevron.classList.remove('open');
+                dropdown.classList.remove('show');
+            }
+        });
+
