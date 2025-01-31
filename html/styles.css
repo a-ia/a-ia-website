@@ -548,7 +548,8 @@ div.navigation.border {
     }
 
     .margin h3 {
-        font-size: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 0rem;
     }
 
     .margin h4 {
@@ -557,7 +558,8 @@ div.navigation.border {
 
     .margin p {
         font-size: 1rem;
-    }
+      margin: 1rem 0;
+  }
 
     .margin pre {
         padding: 1rem;
@@ -565,6 +567,12 @@ div.navigation.border {
 
     .margin code {
         font-size: 0.85rem;
+    }
+
+    .margin ol {
+       font-size: 1rem;
+       margin-left: 1.5rem;
+       margin-bottom: 1.5rem;
     }
 }
 
