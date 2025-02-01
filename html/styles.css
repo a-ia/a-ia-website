@@ -264,9 +264,9 @@
      border-right: 1px solid grey;
 }
  @media (max-width: 800px) {
-     body {
-         overflow-x: none;
-         scrollbar-width: none;
+     html,body{
+         overflow-x: hidden;
+    }
     }
      body > div {
          display: grid;
@@ -315,7 +315,7 @@
      .navigation {
          border-right: 0px solid grey !important;
          position: sticky;
-         top:50px;
+         top:49px;
          z-index: 999;
          width: 100%;
          background-color: black;
