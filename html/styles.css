@@ -176,6 +176,7 @@
 }
  nav ul {
      list-style: none;
+     padding-left: 0;
      padding: 0;
      margin: 0;
 }
@@ -309,6 +310,7 @@
          height: auto;
          max-height: none;
          line-height: unset;
+         margin: 0px;
     }
      .navigation {
          border-right: 0px solid grey !important;
@@ -323,9 +325,7 @@
      nav > ul {
          font-size: 1.6rem;
          justify-content: space-between;
-         padding: 0 1rem;
-         margin-left: 1rem;
-         margin-right: 1rem;
+         margin: 0 1rem;
          gap: 1rem;
          width: 100%;
          display: flex;
