@@ -263,6 +263,10 @@
      border-right: 1px solid grey;
 }
  @media (max-width: 800px) {
+     body {
+         overflow-x: none;
+         scrollbar-width: none;
+    }
      body > div {
          display: grid;
          grid-template-rows: 50px auto auto auto;
