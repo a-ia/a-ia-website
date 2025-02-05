@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebarTitle = document.querySelector('.left-sidebar-title');
     const mainHeader = document.querySelector('.main-body .main-header');
     const mainHeaderH1 = document.querySelector('.main-body .main-header h1');
-    
+    /*TODO: const bodyText = document.querySelector('body html');*/
+
     if (!gradientBg) {
         console.error('gradient-bg element not found');
         return;
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             gradientBg.style.transition = 'opacity 0.6s';
             gradientBg.style.opacity = '0';
- 
+      
             setTimeout(() => {
                 updateGradient();
                 gradientBg.style.opacity = '1';
