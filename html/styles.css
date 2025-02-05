@@ -266,7 +266,7 @@
  @media (max-width: 800px) {
      html,body{
          overflow-x: hidden;
-    }
+         height: 100%;
     }
      body > div {
          display: grid;
@@ -321,7 +321,7 @@
          background-color: black;
          padding-bottom: 10px;
          border-bottom: 1px solid white !important;
-  }
+    }
      nav > ul {
          font-size: 1.6rem;
          justify-content: space-between;
@@ -418,7 +418,8 @@
          margin-left: 0px;
          padding: 10px;
     }
-}
+  }
+
 /* Notes Content Styling */
  .margin {
      padding-right: 10px;
@@ -434,9 +435,8 @@
 }
  .margin h3 {
      font-size: 1.8rem;
+     margin-top: 1.5px;
      color: var(--color-purple-gradient);
-     margin-top: 2.5rem;
-     margin-bottom: 1.2rem;
 }
  .margin h4 {
      font-size: 1.4rem;
@@ -470,9 +470,10 @@
  .margin ul li {
      list-style-type: none;
      position: relative;
+     font-size: 1rem;
 }
  .margin ul li::before {
-     content: "•";
+     content: "-";
      color: var(--color-pink-gradient);
      position: absolute;
      left: -1.2rem;
