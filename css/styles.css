@@ -98,7 +98,7 @@ body {
     "left-sidebar main-body"
     "left-sidebar main-body";
   width: 100%; 
-  max-width: 800px;
+  max-width: 1000px;
   box-sizing: border-box;
   align-items: stretch; 
 }
@@ -256,8 +256,8 @@ p3:hover {
      position: sticky;
 }
  .items img#sharon {
-     width: 100px;
-     height: 100px;
+     width: 120px;
+     height: 120px;
      image-rendering: pixelated;
      display: block;
      border-style: solid;
@@ -265,7 +265,7 @@ p3:hover {
      color: var(--color-white);
 }
  .scroll-box {
-     height: 100px;
+     height: 120px;
      width: 100%;
      overflow-x: hidden;
      overflow-y: auto;
@@ -284,7 +284,7 @@ p3:hover {
      padding-left: 3px;
 }
  .online-status {
-     height: 22px;
+     height: 40px;
      width: 100%;
      text-align: center;
      font-size: 10px;
@@ -296,12 +296,12 @@ p3:hover {
      grid-template-columns: 1fr;
      grid-auto-rows: auto;
      gap: 10px;
-     width: 200px;
+     width: 250px;
 }
  .left-item {
      grid-column: 1 / -1;
      display: grid;
-     height: 105px;
+     height: 120px;
      grid-template-columns: 1fr 1fr;
      grid-template-rows: 1fr 1fr;
      gap: 0px 0px;
@@ -320,7 +320,7 @@ p3:hover {
      counter-increment: item-counter;
 }
  .right-items .item {
-     height: 27px;
+     height: 35px;
      width: 100%;
      white-space: nowrap;
      text-align: center;
@@ -374,7 +374,7 @@ p3:hover {
          grid-auto-rows: auto;
          gap: 7px;
          padding-right: 3px;
-         height: 105px;
+         height: 120px;
          width: 100%;
          overflow-y: auto;
          overflow-x: hidden;
@@ -383,7 +383,7 @@ p3:hover {
     }
      .right-items .item {
          width: 100%;
-         height: 30px;
+         height: 35px;
          margin: 0;
          display: flex;
          align-items: center;
@@ -455,14 +455,14 @@ p3:hover {
   margin: 5px;
   overflow-y: none;
   overflow-x: none; 
-  height: 122px;
+  height: 200px;
   font-size:1.2rem;
   scrollbar-width: none;
 }
 
 
 .intro {
-    height: 122px;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: none;
@@ -478,10 +478,10 @@ p3:hover {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 122px;
     overflow: hidden;
     /* Hide overflow for smooth scrolling */
     position: relative;
+    height: 200px;
 }
  .stamps-container {
     display: flex;
@@ -700,9 +700,9 @@ button {
   background: none;
   border: none;
   padding: 0;
-  margin: 0px;
   cursor: pointer;
   font-family: "Pixelated MS Sans Serif", sans-serif;
+  height: 100%;
 }
 
 
@@ -712,10 +712,9 @@ p3 {
   border-style:dashed;
   border-width: 0px;
   border-color: var(--color-white);
-  height: auto;
+  height: 29px;
   width: initial;
   display:block;
-  margin-top: 1px;
 }
 
 p3:hover { 

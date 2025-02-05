@@ -8,27 +8,46 @@
      margin-right: auto;
 }
  .rss-date {
+   font-size: 1rem;
 }
  .rss-description {
-}
+   font-size: 1.2rem;
+   padding-bottom: 5px;
+ }
 
+/*
 @keyframes glowAndSize {
     0% {
-        font-size: 0.9em;
+        font-size: 1.1em;
         text-shadow: none;
         text-shadow: 0px !important;
     }
     100% {
-        font-size: 1.0em;
+        font-size: 1.2em;
         text-shadow: -1px 1px 3px var(--color-blue-gradient), 
                      1px 1px 3px var(--color-green-accent),
                      1px -1px 3px var(--color-blue-gradient),
                      -1px -1px 3px var(--color-purple-gradient);
     }
 }
+*/
 
+ @keyframes glowAndSize {
+    0% {
+        font-size: 1.1em;
+        text-shadow: none;
+        text-shadow: 0px !important;
+    }
+    100% {
+        text-shadow: -1px 1px 3px var(--color-blue-gradient), 
+                     1px 1px 3px var(--color-green-accent),
+                     1px -1px 3px var(--color-blue-gradient),
+                     -1px -1px 3px var(--color-purple-gradient);
+    }
+ }
+ 
 .rss-title {
-    font-size: 0.9em;
+    font-size: 1.1em;
     margin-bottom: 3px;
     font-family: "romanceA", sans-serif;
     text-decoration: none;
