@@ -611,7 +611,9 @@ td {
      z-index: 1000;
      margin: 0px;
      padding: 0px;
+     border-right-style: dotted;
 }
+
  @media (max-width: 800px) {
      .social-dropdown {
          top: calc(100% - -23px);
