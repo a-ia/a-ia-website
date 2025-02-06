@@ -24,6 +24,22 @@
      --phoneWidth: (max-width: 684px);
      --tabletWidth: (max-width: 900px);
 }
+
+/* lmao */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul,
+li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
  @font-face {
      font-family: "nintendo-ds-bios";
      src: url(/fonts/Nintendo-DS-BIOS.ttf) format("truetype");
