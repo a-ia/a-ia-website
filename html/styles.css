@@ -584,9 +584,9 @@
      transform: rotate(180deg);
 }
  .social-dropdown {
-position: absolute;
+     position: absolute;
      top: calc(100% - -3px);
-     right: auto;
+     right: 0;
      background: black;
      backdrop-filter: blur(5px);
      border: 1px solid rgba(255, 255, 255, 0.8);
@@ -594,6 +594,7 @@ position: absolute;
      white-space: nowrap;
      z-index: 1000;
      margin: 0px;
+     padding: 0px;
 }
  @media (max-width: 800px) {
      .social-dropdown {
