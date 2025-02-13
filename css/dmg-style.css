@@ -1,6 +1,6 @@
 .dmg-container {
   width: 100%;
-  height: 30px;
+  height: 40px;
   position: relative;
   overflow: hidden;
   z-index: 0; 
@@ -8,6 +8,7 @@
 }
 
 .moving-gif {
+  height: 40px;
   image-rendering: pixelated;
   position: absolute;
   left: 0;
