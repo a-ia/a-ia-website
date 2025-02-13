@@ -149,7 +149,15 @@ body {
     padding: 5px;
     overflow-y: none;
     overflow-x: none;
-    height: 100%;
+    height: 160px;
+  }
+  
+  .intro {
+    height: 160px;
+  }
+
+  .stamps {
+    height: 160px;
   }
 
   .container {
