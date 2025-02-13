@@ -164,10 +164,10 @@ func _draw():
     <h4>Register Operations and Keyboard Mapping</h4>
     <p>The CHIP-8 has 16 8bit registers. They are used to store values for operations. VX, VY, VF. VF register is used for the flags, and should not be used in programs. We map these keys to modern keyboard layouts:</p>
     <pre><code># CHIP-8 keypad layout: Keyboard mapping:
-# 1 2 3 C             1 2 3 4
-# 4 5 6 D             Q W E R
-# 7 8 9 E             A S D F
-# A 0 B F             Z X C V
+# 1 2 3 C               1 2 3 4
+# 4 5 6 D               Q W E R
+# 7 8 9 E               A S D F
+# A 0 B F               Z X C V
 const KEYMAP = {
     KEY_1: 0x1, KEY_2: 0x2, KEY_3: 0x3, KEY_4: 0xC,
     KEY_Q: 0x4, KEY_W: 0x5, KEY_E: 0x6, KEY_R: 0xD,
@@ -198,6 +198,6 @@ func _process(delta):
     if sound_timer > 0:
         sound_timer -= 1</code></pre>
     
-    <p>And that's it! Feel free to check out the code on GitHub, and don't forget to try running some classic CHIP-8 games. You might be surprised at how amusing small and simple games can be.</p>
+    <p>And that's it! Feel free to check out the <a href="https://github.com/a-ia/chip8-emu-godot">repo</a> on GitHub, and don't forget to try running some classic CHIP-8 games. You might be surprised at how amusing small and simple games can be.</p>
 </div>
 </html>
