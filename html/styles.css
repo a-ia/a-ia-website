@@ -445,7 +445,6 @@ td {
  .margin h2 {
      font-size: 2.2rem;
      color: var(--color-fairypink);
-     margin-bottom: 2rem;
      letter-spacing: 0.05em;
      font-weight: 500;
 }
@@ -464,7 +463,6 @@ td {
  .margin p {
      font-size: 1.3rem;
      line-height: 1.7;
-     margin-bottom: 1.2rem;
      color: var(--color-white);
 }
  .margin b {
@@ -486,7 +484,7 @@ td {
  .margin ul li {
      list-style-type: none;
      position: relative;
-     font-size: 1rem;
+     font-size: 1.3rem;
 }
  .margin ul li::before {
      content: "-";
@@ -533,10 +531,9 @@ td {
          margin-bottom: 0rem;
     }
      .margin h4 {
-         font-size: 1rem;
+         font-size: 1.3rem;
     }
      .margin p {
-         font-size: 1rem;
          margin: 1rem 0;
     }
      .margin pre {
