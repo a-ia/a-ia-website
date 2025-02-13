@@ -1,3 +1,18 @@
+const style = document.createElement('style');
+style.textContent = `
+.page-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page-container.visible {
+    opacity: 1;
+}
+`;
+document.head.appendChild(style);
+
+
+
 /// SECTION 1: ASCII Animation Functionality
 const textarea = document.getElementById('ascii-art');
 let originalFrames = [];
@@ -52,7 +67,7 @@ async function loadFrames() {
         // Ascii fade-in on intial load
         setTimeout(() => {
             textarea.classList.add('visible');
-        }, 100);
+        },);
 
       return frames;
     } catch (error) {
@@ -177,17 +192,30 @@ window.addEventListener('popstate', () => {
 });
 
 // SECTION 4: Page Load Initialization
-window.addEventListener('load', () => {
-    const contentDiv = document.getElementById('content');
+window.addEventListener('load', async () => {
+    // Wrap the entire content in a container div for fade effect
+    const pageContainer = document.createElement('div');
+    pageContainer.className = 'page-container';
+    document.body.appendChild(pageContainer);
     
-    // Check for initial hash and load content if present
-    const initialHash = window.location.hash.substring(1);
-    if (initialHash) {
-        loadContent(initialHash.replace(/-/g, ' '));
+    // Move all body content into the container
+    while (document.body.firstChild !== pageContainer) {
+        if (document.body.firstChild) {
+            pageContainer.appendChild(document.body.firstChild);
+        }
     }
 
-    // Initialize ASCII frames
-    loadFrames().then(loadedFrames => {
+    try {
+        const contentDiv = document.getElementById('content');
+        
+        // Check for initial hash and load content if present
+        const initialHash = window.location.hash.substring(1);
+        if (initialHash) {
+            await loadContent(initialHash.replace(/-/g, ' '));
+        }
+
+        // Initialize ASCII frames
+        const loadedFrames = await loadFrames();
         frames = loadedFrames;
         if (frames.length > 0) {
             textarea.value = frames[currentFrameIndex];
@@ -196,13 +224,21 @@ window.addEventListener('load', () => {
             textarea.addEventListener('mouseenter', startAnimation);
             textarea.addEventListener('mouseleave', stopAnimation);
         }
-    }).catch(error => {
-        console.error('Initialization error:', error);
-    });
 
-    // Reset and display ASCII textarea inside the content div
-    contentDiv.innerHTML = '';
-    contentDiv.appendChild(textarea);
+        // Reset and display ASCII textarea inside the content div
+        contentDiv.innerHTML = '';
+        contentDiv.appendChild(textarea);
+
+        // Fade in the entire page
+        setTimeout(() => {
+            pageContainer.classList.add('visible');
+        }, 100);
+
+    } catch (error) {
+        console.error('Initialization error:', error);
+        // Still show the page even if there's an error
+        pageContainer.classList.add('visible');
+    }
 });
 
 
