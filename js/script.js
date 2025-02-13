@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebarTitle = document.querySelector('.left-sidebar-title');
     const mainHeader = document.querySelector('.main-body .main-header');
     const mainHeaderH1 = document.querySelector('.main-body .main-header h1');
+    const translucentDivs = document.querySelectorAll('.translucent');
     /*TODO: const bodyText = document.querySelector('body html');*/
 
     if (!gradientBg) {
@@ -23,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (element) {
                 element.style.background = newGradient;
             }
+        });
+        translucentDivs.forEach(div => {
+            div.style.backgroundColor = isDark 
+                ? 'rgba(0, 0, 0, 0.2)' 
+                : 'rgba(255, 255, 255, 0.1)';
         });
     };
     
