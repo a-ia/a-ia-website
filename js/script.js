@@ -4,57 +4,147 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainHeader = document.querySelector('.main-body .main-header');
     const mainHeaderH1 = document.querySelector('.main-body .main-header h1');
     const translucentDivs = document.querySelectorAll('.translucent');
-    /*TODO: const bodyText = document.querySelector('body html');*/
 
     if (!gradientBg) {
         console.error('gradient-bg element not found');
         return;
     }
     
+    /* Create star layer */
     const starLayer = document.createElement('div');
     starLayer.className = 'star-layer';
     gradientBg.appendChild(starLayer);
     
-    let isDark = localStorage.getItem('darkMode') === 'true';
-    
-    const updateGradient = () => {
-        const newGradient = isDark ? 'var(--gradient-main-dark)' : 'var(--gradient-main)';
+    /* Theme state management */
+    const themeState = {
+        isDark: localStorage.getItem('darkMode') === 'true',
+        currentTheme: localStorage.getItem('currentTheme') || 'default',
+        
+        themes: {
+            'default': {
+                stylesheet: 'css/styles.css',
+                supportsGradient: true,
+                supportsDarkMode: true
+            },
+            'win98': {
+                stylesheet: 'css/98.css',
+                supportsGradient: false,
+                supportsDarkMode: false
+            }
+        /* More themes can go here */
+        }
+    };
+
+    function updateGradient() {
+        if (!themeState.themes[themeState.currentTheme].supportsGradient) return;
+        
+        const newGradient = themeState.isDark ? 'var(--gradient-main-dark)' : 'var(--gradient-main)';
         gradientBg.style.background = newGradient;
+        
         [sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {
             if (element) {
                 element.style.background = newGradient;
             }
         });
+        
         translucentDivs.forEach(div => {
-            div.style.backgroundColor = isDark 
+            div.style.backgroundColor = themeState.isDark 
                 ? 'rgba(0, 0, 0, 0.2)' 
                 : 'rgba(255, 255, 255, 0.1)';
         });
-    };
-    
-    updateGradient();
-    
-    const darkModeButton = document.getElementById('darkModeToggle');
-    if (darkModeButton) {
-        darkModeButton.addEventListener('click', function() {
-            isDark = !isDark;
-            localStorage.setItem('darkMode', isDark);
-            
-            const toggleName = document.getElementById('toggleName');
-            if (toggleName) {
-                toggleName.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-            }
-            
-            gradientBg.style.transition = 'opacity 0.6s';
-            gradientBg.style.opacity = '0';
-      
-            setTimeout(() => {
-                updateGradient();
-                gradientBg.style.opacity = '1';
-            }, 500);
-        });
     }
 
+    /* Update UI controls based on current theme */
+    function updateThemeControls() {
+        const darkModeButton = document.getElementById('darkModeToggle');
+        const currentTheme = themeState.themes[themeState.currentTheme];
+        
+        if (darkModeButton) {
+            darkModeButton.disabled = !currentTheme.supportsDarkMode;
+        }
+    }
+
+    /* Theme application function */
+    function applyTheme(themeName) {
+        if (!themeState.themes[themeName]) {
+            console.error(`Theme "${themeName}" not found`);
+            return;
+        }
+
+        const theme = themeState.themes[themeName];
+        themeState.currentTheme = themeName;
+        localStorage.setItem('currentTheme', themeName);
+        
+        /* Update stylesheet */
+        const currentStylesheet = document.querySelector('link[href*="css/"]');
+        if (currentStylesheet) {
+            currentStylesheet.href = theme.stylesheet;
+        }
+        
+        /* Add/remove theme-specific body class */
+        document.body.className = ''; // Reset classes
+        document.body.classList.add(`${themeName}-theme`);
+        
+        /* Apply gradient if supported */
+        if (theme.supportsGradient) {
+            updateGradient();
+        }
+        
+        /* Update UI state */
+        updateThemeControls();
+    }
+
+    /* Toggle dark mode */
+    function toggleDarkMode() {
+        const currentTheme = themeState.themes[themeState.currentTheme];
+        if (!currentTheme.supportsDarkMode) return;
+        
+        themeState.isDark = !themeState.isDark;
+        localStorage.setItem('darkMode', themeState.isDark);
+        
+        const toggleName = document.getElementById('toggleName');
+        if (toggleName) {
+            toggleName.textContent = themeState.isDark ? 'Light Mode' : 'Dark Mode';
+        }
+        
+        gradientBg.style.transition = 'opacity 0.6s';
+        gradientBg.style.opacity = '0';
+  
+        setTimeout(() => {
+            updateGradient();
+            gradientBg.style.opacity = '1';
+        }, 500);
+    }
+
+    /* Apply current theme on load */
+    applyTheme(themeState.currentTheme);
+
+    /* Dark mode toggle */
+    const darkModeButton = document.getElementById('darkModeToggle');
+    if (darkModeButton) {
+        darkModeButton.addEventListener('click', toggleDarkMode);
+    }
+
+    /* Theme toggle button */
+    const themeButton = document.getElementById('toggleTheme');
+    if (themeButton) {
+        themeButton.addEventListener('click', function() {
+            document.body.style.transition = 'all 0.2s';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                /* Toggle between default and win98 themes */
+                /* For future multiple themes I might replace this with a theme selector tooltip */
+                const nextTheme = themeState.currentTheme === 'default' ? 'win98' : 'default';
+                applyTheme(nextTheme);
+                document.body.style.opacity = '1';
+            }, 500);
+        });
+    } else {
+        console.error('Theme button (toggleTheme) not found');
+    }
+
+    /* Scrolling stamps animation */
     const container = document.querySelector(".stamps");
     const content = document.querySelector(".stamps-container");
     let direction = 1; /* 1 = down, -1 = up */
@@ -88,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     step(); /* Start animation loop */
 
+    // Audio management
     const audio = new Audio("../music/music.wav");
     
     /* Check localStorage for saved music preference, default to true if not set */
@@ -120,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </label>
         </div>
     `;
-
+   
     settingsButton.addEventListener("click", function () {
         if (settingsContainer.classList.contains("settings-open")) {
             settingsContainer.innerHTML = originalContent;
@@ -136,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             if (starToggle && musicToggle) {
                 starToggle.checked = starsEnabled;
-                musicToggle.checked = musicEnabled; // Use the same musicEnabled from outside
+                musicToggle.checked = musicEnabled;
                 
                 const starLayer = document.querySelector('.star-layer');
                 if (starLayer) {
@@ -164,4 +255,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
