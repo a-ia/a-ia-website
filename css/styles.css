@@ -445,7 +445,7 @@ hr {
   }
 
   .right-items .item {
-    width: 100%;
+    width: 100% !important;
     height: 28px;
     margin: 0;
     display: flex;
