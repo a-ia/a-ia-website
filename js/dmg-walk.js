@@ -15,7 +15,8 @@ const originalContainerStyle = {
     width: container.style.width,
     height: container.style.height,
     overflow: container.style.overflow,
-    zIndex: container.style.zIndex
+    zIndex: container.style.zIndex,
+    borderBottom: container.style.borderBottom
 };
 
 const originalGifStyle = {
@@ -80,6 +81,8 @@ gif.addEventListener('click', (event) => {
         container.style.zIndex = '2'; 
         container.style.pointerEvents = 'none';
 
+        container.style.borderBottom = 'none';
+
         gif.style.position = 'fixed';
         gif.style.zIndex = '2147483647';
         gif.style.transition = 'none';
@@ -102,6 +105,8 @@ gif.addEventListener('click', (event) => {
         positionX = 0;
         positionY = 0;
         movingRight = true;
+
+        container.style.borderBottom = originalContainerStyle.borderBottom;
 
         document.removeEventListener('keydown', handleKeyPress);
         autoAnimate = true;
