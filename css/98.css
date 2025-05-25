@@ -17,9 +17,6 @@
   /* Main gradient */
   --gradient-main: #EFF1F5;
 
-  /* Dark gradient */
-  --gradient-main-dark: #000;
-
   /* Spacing */
   --element-spacing: 8px;
   --grouped-button-spacing: 4px;
@@ -97,14 +94,6 @@
   src: url("fonts/converted/ms_sans_serif_bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
-}
-
-
-.dark-mode {
-  --H: 270;
-  --S: 90%;
-  --L: 30%;
-  --gradient-opacity: 0.8;
 }
 
 @font-face {
@@ -246,7 +235,12 @@ body {
   margin-bottom: 5px;
   transition: background 0.5s ease-in-out;
   border-style:solid;
-  border-width:0px 0px 1px 0px;
+  border-width:0px 0px 0px 0px;
+
+  background-color: var(--button-face);
+  color: var(--text-color);
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+
 }
 
 .left-sidebar-title h1 {

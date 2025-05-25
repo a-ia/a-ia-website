@@ -57,10 +57,20 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Update UI controls based on current theme */
     function updateThemeControls() {
         const darkModeButton = document.getElementById('darkModeToggle');
+        const toggleName = document.getElementById('toggleName');
         const currentTheme = themeState.themes[themeState.currentTheme];
         
         if (darkModeButton) {
             darkModeButton.disabled = !currentTheme.supportsDarkMode;
+            
+            // Update toggle name text based on current state and theme support
+            if (toggleName) {
+                if (!currentTheme.supportsDarkMode) {
+                    toggleName.textContent = 'Dark Mode';
+                } else {
+                    toggleName.textContent = themeState.isDark ? 'Light Mode' : 'Dark Mode';
+                }
+            }
         }
     }
 
@@ -75,6 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
         themeState.currentTheme = themeName;
         localStorage.setItem('currentTheme', themeName);
         
+        /* Handle dark mode compatibility */
+        if (!theme.supportsDarkMode && themeState.isDark) {
+            // Don't actually change isDark in localStorage yet, just adjust for UI
+            // This way when switching back to a theme that supports dark mode, 
+            // the preference is preserved
+            document.body.classList.remove('dark-mode');
+        } else if (themeState.isDark) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        
         /* Update stylesheet */
         const currentStylesheet = document.querySelector('link[href*="css/"]');
         if (currentStylesheet) {
@@ -84,6 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
         /* Add/remove theme-specific body class */
         document.body.className = ''; // Reset classes
         document.body.classList.add(`${themeName}-theme`);
+        
+        // Re-add dark-mode class if applicable
+        if (themeState.isDark && theme.supportsDarkMode) {
+            document.body.classList.add('dark-mode');
+        }
         
         /* Apply gradient if supported */
         if (theme.supportsGradient) {
@@ -96,24 +123,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Toggle dark mode */
     function toggleDarkMode() {
-        const currentTheme = themeState.themes[themeState.currentTheme];
-        if (!currentTheme.supportsDarkMode) return;
-        
-        themeState.isDark = !themeState.isDark;
-        localStorage.setItem('darkMode', themeState.isDark);
-        
+    const currentTheme = themeState.themes[themeState.currentTheme];
+
+    // If theme doesn't support dark mode, force light mode and return
+    if (!currentTheme.supportsDarkMode) {
+        themeState.isDark = false;
+        localStorage.setItem('darkMode', false);
+        document.body.classList.remove('dark-mode');
+
         const toggleName = document.getElementById('toggleName');
         if (toggleName) {
-            toggleName.textContent = themeState.isDark ? 'Light Mode' : 'Dark Mode';
+            toggleName.textContent = 'Dark Mode';
         }
-        
-        gradientBg.style.transition = 'opacity 0.6s';
-        gradientBg.style.opacity = '0';
-  
-        setTimeout(() => {
-            updateGradient();
-            gradientBg.style.opacity = '1';
-        }, 500);
+
+        updateGradient(); // Update gradient to reflect light mode
+        return;
+    }
+
+    // Toggle dark mode
+    themeState.isDark = !themeState.isDark;
+    localStorage.setItem('darkMode', themeState.isDark);
+
+    const toggleName = document.getElementById('toggleName');
+    if (toggleName) {
+        toggleName.textContent = themeState.isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    document.body.classList.toggle('dark-mode', themeState.isDark);
+
+    gradientBg.style.transition = 'opacity 0.6s';
+    gradientBg.style.opacity = '0';
+
+    setTimeout(() => {
+        updateGradient();
+        gradientBg.style.opacity = '1';
+    }, 500);
     }
 
     /* Apply current theme on load */
