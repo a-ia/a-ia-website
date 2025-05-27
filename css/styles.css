@@ -555,6 +555,7 @@ p3:hover {
   margin-left: 4px;
   line-height: 25px;
   position: relative;
+  padding-right: 4px;
 }
 
 .stamps {
@@ -1014,4 +1015,61 @@ a.glow:hover,
 a.glow:focus {
   color: var(--color-white);
   animation: rainbow-shadow 2s linear infinite;
+}
+
+
+/* Photo Log Widget Custom Styles */
+.photo-log-widget {
+    width: 166px;
+    height: 200px;
+    background-color: transparent;
+    border-radius: 0px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    margin-right: 4px;
+}
+.plw-title {
+    color: #fff;
+    font-size: 12px!important;
+}
+
+.plw-description {
+    color: #fff;
+    font-size: 12px!important;
+    overflow-y: auto;
+}
+
+.plw-nav-button {
+    background-color: #00000000;
+    color: #fff;
+    border-radius: 1px;
+}
+
+.plw-date {
+  margin: 0px!important;
+  color: #fff!important;
+}
+
+.plw-nav-button:hover:not(:disabled) {
+    background-color: #FFDEFF8F;
+    transform: translateY(-1px);
+}
+
+.plw-date {
+    color: #666666;
+    font-size: 8px;
+}
+
+.plw-content {
+  padding: 2px!important;
+}
+
+.plw-navigation {
+  position: sticky;
+  bottom: 0px!important;
+  padding: 0px 5px 5px;
+}
+
+.plw-nav-button {
+  min-width: 20px!important;
+  height: 20px!important;
 }
