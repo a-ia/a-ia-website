@@ -1115,3 +1115,18 @@ a.glow:focus {
 html {
     scroll-behavior: smooth;
 }
+
+button.inactive {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+
+button.inactive .glow {
+  text-shadow: none;
+  color: gray;
+}
+
