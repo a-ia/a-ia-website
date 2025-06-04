@@ -20,9 +20,25 @@
   --color-deep-blue-gradient: #262047;
   --color-deep-violet-gradient: #32174d;
 
+/* Pastel Gradient Colors */
+--color-pink-gradient-pastel: #fbe9ee;
+--color-purple-gradient-pastel: #f3f0f8;
+--color-blue-gradient-pastel: #ebf5fa;
+--color-green-accent-pastel: #f5f8f1;
+
+/* Pastel Deep Gradient Colors */
+--color-deep-red-gradient-pastel: #9e6b6c;
+--color-deep-blue-gradient-pastel: #8d89a7;
+--color-deep-violet-gradient-pastel: #9d7faa;
+
   /* Text shadow colors */
   --color-purple-glow: #dbbdf9;
 
+  /* Div background colors */
+    --div-bg: rgba(226, 151, 178, 0.5); /* light mode pink */
+  [data-theme="dark"] {
+    --div-bg: rgba(38, 32, 71, 0.5); /* dark mode blue */
+  }
   /* Rainbow colors */
   --color-red: #ff0000;
   --color-orange: #ff8800;
@@ -37,18 +53,13 @@
 
   /* Dark gradient */
   --gradient-main-dark: linear-gradient(45deg, var(--color-deep-red-gradient), var(--color-deep-blue-gradient), var(--color-deep-violet-gradient));
+
 }
 
 /* ======================================== */
 /* ========= Base and Grid Styles ========= */
 /* ======================================== */
 
-.dark-mode {
-  --H: 270;
-  --S: 90%;
-  --L: 30%;
-  --gradient-opacity: 0.8;
-}
 
 @font-face {
   font-family: "Pixelated MS Sans Serif";
@@ -83,7 +94,7 @@
 
 body,
 html {
-  color: var(--color-white);
+  color: black;
   overflow-y: none;
 }
 
@@ -132,16 +143,6 @@ body {
     background-color: transparent;
     border-style: dotted;
     border-width: 0px;
-    border-color: var(--color-white);
-  }
-
-
-  .photo-log {
-    height: 100%;
-  }
-
-  .photo-log iframe {
-    height: 400px;
   }
 
   .description {
@@ -180,10 +181,6 @@ body {
     gap: 0px 0px;
   }
 
-  .dmg-container {
-    pointer-events: none;
-  }
-
   .moving-gif {
     pointer-events: none;
   }
@@ -195,6 +192,7 @@ body {
   text-align: center;
   width: 100%;
   text-shadow: var(--color-purple-glow) 0px 0px 8px;
+  color: var(--color-white);
 }
 
 /* ========================================= */
@@ -353,7 +351,7 @@ hr {
   padding: 0px;
   border-style: solid;
   border-width: 0px 0px 1px 0px;
-  color: var(--color-white);
+  border-color: var(--color-white);
   grid-template-areas: "avatar scroll-box" "online-status scroll-box";
 }
 
@@ -372,9 +370,31 @@ hr {
   white-space: nowrap;
   text-align: center;
   vertical-align: middle;
-  border: 1q solid var(--color-white);
+  border: 1px dotted;
   padding-top: 2px;
+  background: linear-gradient(30deg,
+      var(--color-pink-gradient-pastel),
+      var(--color-purple-gradient-pastel), 
+      var(--color-blue-gradient-pastel));
+  background-size: 100% 100%;
+  animation: gradientShift 15s infinite linear;
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: var(--gradient-opacity);
 }
+
+[data-theme="dark"] .right-items .item {
+  background: linear-gradient(30deg,
+      var(--color-deep-red-gradient),
+      var(--color-deep-blue-gradient), 
+      var(--color-deep-violet-gradient));
+  background-size: 100% 100%;
+  animation: gradientShift 15s infinite linear;
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: var(--gradient-opacity);
+  color: var(--color-white)!important;
+}
+
+
 
 .right-items {
   display: flex;
@@ -458,7 +478,6 @@ p3:hover {
   margin: 0px;
   border-style: dashed;
   border-width: 1px;
-  border-color: var(--color-white);
   width: initial;
   height: initial;
   display: block;
@@ -495,19 +514,8 @@ p3:hover {
   }
 }
 
-/* Adds numbers before each item [class^="item"]::before {
-     content: counter(item-counter);
-     margin-right: 5px;
-     font-size: 0.8em;
-     color: var(--color-pink);
-}
-*/
 .scroll-box {
   grid-area: scroll-box;
-}
-
-.avatar {
-  grid-area: avatar;
 }
 
 .online-status {
@@ -527,9 +535,16 @@ p3:hover {
   border-bottom: 1px solid var(--color-grey);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  overflow: hidden;
+  overflow-y: auto;
   transition: transform 0.6s, height 0.6s, width 0.6s;
+  position: relative;
+  scrollbar-width: none;       /* Note: Firefox */
+  -ms-overflow-style: none;    /* Note: Internet Explorer/Edge */
 }
+
+  .main-body::-webkit-scrollbar {
+    display: none; /* Note: Chrome, Safari */
+  }
 
 .description {
   grid-area: description;
@@ -550,7 +565,7 @@ p3:hover {
   overflow-y: auto;
   scrollbar-width: none;
   width: 100%;
-  border-left: 1px dashed var(--color-white);
+  border-left: 1px dashed;
   padding-left: 5px;
   margin-left: 4px;
   line-height: 25px;
@@ -591,7 +606,6 @@ p3:hover {
   opacity: 1;
 }
 
-
 .content-container {
   grid-area: content-container;
   grid-row: 2;
@@ -612,7 +626,6 @@ p3:hover {
   grid-area: rss;
 }
 
-
 .fun,
 .rss {
   display: inline-block;
@@ -620,7 +633,7 @@ p3:hover {
   padding: 5px;
   margin: 0;
   border-radius: 5px;
-  border: 1px dashed var(--color-grey);
+  border: 1px dashed;
   width: 100%;
   height: 135px;
   box-sizing: border-box;
@@ -631,14 +644,14 @@ iframe {
 }
 
 
-.dmg-container {
-  grid-area: dmg-container;
-  grid-row: 4;
+.projects {
+  grid-area: projects;
   position: relative;
-  overflow: none;
-  background-color: transparent;
-  border-style: dotted;
-  border-width: 0px 0px 1px 0px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px dashed;
+  box-sizing: border-box;
 }
 
 .center-title {
@@ -662,16 +675,20 @@ iframe {
   overflow-wrap: break-word;
   transition: background 0.5s ease-in-out;
   font-family: "romanceB", sans-serif;
+  color: var(--color-white);
 }
 
 .main-body .main-header {
-  position: relative;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   overflow: hidden;
   padding: 5px;
   background: var(--gradient-main);
   background-clip: padding-box;
   border-width: 0px 0px 1px 0px;
   border-style: solid;
+  border-color: white;
 }
 
 
@@ -695,14 +712,13 @@ iframe {
   grid-area: links;
 }
 
-.links {
+  .links {
   text-align: left;
   width: 100%;
   padding: 0px;
   margin: 0px;
   border-radius: 5px;
-  border: 1px solid var(--color-grey);
-
+  border: 1px dashed;
 }
 
 .links:hover {
@@ -710,6 +726,9 @@ iframe {
   margin: 0px;
 }
 
+.links h2 {
+  font-weight: 300;
+}
 
 .links a {
   white-space: nowrap;
@@ -726,17 +745,17 @@ iframe {
 }
 
 .links h2,
-.rss h2 {
+.rss h2,
+.projects h2 {
   border-style: dotted;
   border-width: 0px 0px 1px 0px;
-  color: var(--color-white);
   padding: 0px;
   font-size: 18px;
   margin: 0px;
   white-space: nowrap;
   font-family: "romanceB", sans-serif;
+  font-weight: 300;
 }
-
 
 
 /* Images and Icons */
@@ -756,6 +775,8 @@ iframe {
 /* ========================================= */
 /* =========== Background Styles =========== */
 /* ========================================= */
+
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -789,14 +810,6 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg,
-      hsl(var(--H), var(--S), calc(var(--L) * 1.5)),
-      hsl(var(--H), var(--S), calc(var(--L) * 0.7)),
-      hsl(var(--H), var(--S), calc(var(--L) * 0.9)));
-  background-size: 400% 400%;
-  animation: gradientShift 15s infinite linear;
-  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  opacity: var(--gradient-opacity);
 }
 
 /*
@@ -859,7 +872,6 @@ p3 {
   background-color: transparent;
   border-style: dashed;
   border-width: 0px;
-  border-color: var(--color-white);
   height: 29px;
   width: initial;
   display: block;
@@ -884,7 +896,6 @@ p3:hover {
   margin: 2px;
   border-style: dashed;
   border-width: 1px;
-  border-color: var(--color-white);
   width: initial;
   display: block;
   margin-top: 0px;
@@ -974,7 +985,6 @@ a {
 
 p2.glow {
   text-decoration: none;
-  color: var(--color-white);
   text-shadow: -1px 1px 1px var(--color-blue-gradient),
     1px 1px 1px var(--color-green-accent),
     1px -1px 1px var(--color-blue-gradient),
@@ -988,6 +998,10 @@ p2.glow {
   font-size: 1rem;
 }
 
+[data-theme="dark"] p2.glow {
+  color: white;
+}
+
 p2.glow:hover,
 p2.glow:focus {
   color: var(--color-white);
@@ -996,7 +1010,6 @@ p2.glow:focus {
 
 a.glow {
   text-decoration: none;
-  color: var(--color-white);
   text-shadow: -1px 1px 1px var(--color-blue-gradient),
     1px 1px 1px var(--color-green-accent),
     1px -1px 1px var(--color-blue-gradient),
@@ -1014,4 +1027,91 @@ a.glow:hover,
 a.glow:focus {
   color: var(--color-white);
   animation: rainbow-shadow 2s linear infinite;
+}
+
+ @keyframes yipee {
+    0% {
+        text-shadow: none;
+        text-shadow: 0px !important;
+    }
+    100% {
+        text-shadow: -1px 1px 3px var(--color-blue-gradient), 
+                     1px 1px 3px var(--color-green-accent),
+                     1px -1px 3px var(--color-blue-gradient),
+                     -1px -1px 3px var(--color-purple-gradient);
+    }
+ }
+ 
+.yipee {
+    text-decoration: none;
+}
+
+.yipee:hover {
+    animation: yipee 0.3s forwards ease-in-out;
+}
+
+.projects-title {
+    font-size: 1.1em;
+    margin-bottom: 3px;
+    font-family: "romanceA", sans-serif;
+    text-decoration: none;
+    letter-spacing: 1pt;
+    transition: all 0.3s ease;
+}
+
+.projects-title:hover {
+    animation: glowAndSize 0.3s forwards ease-in-out;
+}
+
+.gradient-box {
+  animation: gradientShift 15s infinite linear;
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: var(--gradient-opacity);
+}
+
+/* Light Theme Pastel Gradient */
+[data-theme="light"] .gradient-box {
+  background: linear-gradient(30deg,
+    var(--color-pink-gradient-pastel),
+    var(--color-purple-gradient-pastel),
+    var(--color-blue-gradient-pastel));
+}
+
+/* Dark Theme Deep Gradient */
+[data-theme="dark"] .gradient-box {
+  background: linear-gradient(30deg,
+    var(--color-deep-red-gradient),
+    var(--color-deep-blue-gradient),
+    var(--color-deep-violet-gradient));
+  color: var(--color-white) !important;
+  border-color: var(--color-white);
+}
+
+/* Glow animation for section headers */
+.section-glow {
+    animation: sectionGlow 2s ease-in-out;
+    border-color: currentColor;
+}
+
+@keyframes sectionGlow {
+    0% {
+        text-shadow: 0 0 5px currentColor;
+    }
+    25% {
+        text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+    50% {
+        text-shadow: 0 0 25px currentColor, 0 0 35px currentColor, 0 0 45px currentColor;
+    }
+    75% {
+        text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+    100% {
+        text-shadow: 0 0 5px currentColor;
+    }
+}
+
+/* Enhanced smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
 }

@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let isDark = localStorage.getItem('darkMode') === 'true';
     
     const updateGradient = () => {
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+
         const newGradient = isDark ? 'var(--gradient-main-dark)' : 'var(--gradient-main)';
         gradientBg.style.background = newGradient;
         [sidebarTitle, mainHeader, mainHeaderH1].forEach(element => {

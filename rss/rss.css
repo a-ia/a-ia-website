@@ -51,7 +51,6 @@
     margin-bottom: 3px;
     font-family: "romanceA", sans-serif;
     text-decoration: none;
-    color: var(--color-white);
     letter-spacing: 1pt;
     transition: all 0.3s ease;
 }
