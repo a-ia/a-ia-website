@@ -1,21 +1,15 @@
-  function syncMainBodyHeight() {
-    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+function syncMainBodyHeight() {
+  if (!window.matchMedia('(min-width: 768px)').matches) return;
 
-    if (!isDesktop) return; 
+  const sidebar = document.querySelector('.left-sidebar');
+  const mainBody = document.querySelector('.main-body');
 
-    const sidebar = document.querySelector('.left-sidebar');
-    const mainBody = document.querySelector('.main-body');
-
-    if (sidebar && mainBody) {
-      if (isDesktop) {
-        const sidebarHeight = sidebar.offsetHeight;
-        mainBody.style.maxHeight = `${sidebarHeight}px`;
-      } else {
-        mainBody.style.maxHeight = '';
-      }
-    }
+  if (sidebar && mainBody) {
+    const sidebarHeight = sidebar.offsetHeight;
+    mainBody.style.maxHeight = `${sidebarHeight}px`;
   }
-  
-  window.addEventListener('DOMContentLoaded', syncMainBodyHeight);
-  window.addEventListener('resize', syncMainBodyHeight);
+}
+
+window.addEventListener('DOMContentLoaded', syncMainBodyHeight);
+window.addEventListener('resize', syncMainBodyHeight);
 
