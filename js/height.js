@@ -1,6 +1,8 @@
   function syncMainBodyHeight() {
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
+    if (!isDesktop) return; 
+
     const sidebar = document.querySelector('.left-sidebar');
     const mainBody = document.querySelector('.main-body');
 
