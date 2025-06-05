@@ -99,6 +99,12 @@ class Navigation {
     }
 
     toggleMenu(menuItem, event) {
+        // Menu toggle
+        document.addEventListener('click', (e) => {
+            const menuItem = e.target.closest('.menu-item');
+            if (menuItem) this.toggleMenu(menuItem, e);
+        });
+
         event.preventDefault();
         const submenu = menuItem.querySelector('.submenu');
         if (!submenu) return;
