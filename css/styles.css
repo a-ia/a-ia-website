@@ -107,6 +107,19 @@ body {
   font-family: "Pixelated MS Sans Serif", "Pixel Sans Serif", sans-serif;
 }
 
+@media (min-width: 800px) {
+  body {
+    zoom: 1.4;
+  }
+
+  @supports not (zoom: 1.4) {
+    body {
+      transform: scale(1.4);
+      transform-origin: top left;
+    }
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: auto minmax(min-content, 1fr);
@@ -273,6 +286,7 @@ body {
   border-radius: 5px;
   padding: 5px;
   height: fit-content;
+  min-width: 200px;
 }
 
 .side-container {
@@ -543,6 +557,7 @@ p3:hover {
   position: relative;
   scrollbar-width: none;       /* Note: Firefox */
   -ms-overflow-style: none;    /* Note: Internet Explorer/Edge */
+  min-width: 340px;
 }
 
   .main-body::-webkit-scrollbar {
@@ -919,7 +934,6 @@ p3:hover {
 /* List and Bullet Styles */
 .bullet-wrapper {
   display: inline-block;
-  margin: 4px;
   padding: 3px;
   width: max-content;
 }
