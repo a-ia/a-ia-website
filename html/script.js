@@ -1,204 +1,227 @@
 // ASCII Animation System
-class ASCIIAnimator {
-    constructor() {
-        this.textarea = document.getElementById('ascii-art');
-        this.frames = [];
-        this.currentFrame = 13;
-        this.animationId = null;
-        this.isMobile = window.innerWidth <= 768;
-        
-        this.init();
-    }
+const textarea = document.getElementById('ascii-art');
+let frames = [];
+let originalFrames = [];
+let currentFrameIndex = 13;
+let animationInterval;
+let isMobileView = false;
 
-    async init() {
-        await this.loadFrames();
-        this.setupEventListeners();
-        this.showInitialFrame();
-    }
+function checkMobileView() {
+    return window.innerWidth <= 768 && window.innerWidth > 0;
+}
 
-    async loadFrames() {
-        const promises = Array.from({length: 33}, (_, i) => 
-            fetch(`./ascii/${i + 1}.txt`).then(r => r.ok ? r.text() : '')
-        );
-        
-        const results = await Promise.allSettled(promises);
-        this.frames = results
-            .filter(r => r.status === 'fulfilled' && r.value)
-            .map(r => this.isMobile ? this.trimForMobile(r.value) : r.value);
-        
-        console.log(`Loaded ${this.frames.length} frames`);
-    }
-
-    trimForMobile(frame) {
+function trimFramesForMobile(originalFrames) {
+    return originalFrames.map(frame => {
         return frame.split('\n')
             .map(line => line.length > 12 ? line.slice(12) : line)
             .join('\n');
-    }
+    });
+}
 
-    setupEventListeners() {
-        this.textarea.addEventListener('mouseenter', () => this.startAnimation());
-        this.textarea.addEventListener('mouseleave', () => this.stopAnimation());
+async function loadFrames() {
+    try {
+        const loadedFrames = [];
         
-        window.addEventListener('resize', () => {
-            const wasMobile = this.isMobile;
-            this.isMobile = window.innerWidth <= 768;
-            if (wasMobile !== this.isMobile) this.loadFrames();
+        // Load all frames with Promise.all for better performance
+        const promises = Array.from({length: 33}, (_, i) => {
+            return fetch(`./ascii/${i + 1}.txt`)
+                .then(response => response.ok ? response.text() : null)
+                .catch(() => null);
         });
-    }
+        
+        const results = await Promise.all(promises);
+        results.forEach((frame, i) => {
+            if (frame) {
+                loadedFrames.push(frame);
+            } else {
+                console.error(`Failed to fetch frame ${i + 1}`);
+            }
+        });
+        
+        console.log(`Loaded ${loadedFrames.length} frames`);
+        
+        originalFrames = [...loadedFrames];
+        isMobileView = checkMobileView();
+        frames = isMobileView ? trimFramesForMobile(loadedFrames) : loadedFrames;
 
-    showInitialFrame() {
-        if (this.frames.length > 0) {
-            this.textarea.value = this.frames[this.currentFrame];
-            setTimeout(() => this.textarea.classList.add('visible'), 100);
-        }
-    }
-
-    startAnimation() {
-        this.stopAnimation();
-        this.animationId = setInterval(() => {
-            this.currentFrame = (this.currentFrame + 1) % this.frames.length;
-            this.textarea.value = this.frames[this.currentFrame];
+        setTimeout(() => {
+            textarea.classList.add('visible');
         }, 100);
-    }
 
-    stopAnimation() {
-        if (this.animationId) {
-            clearInterval(this.animationId);
-            this.animationId = null;
-            this.textarea.value = this.frames[13] || '';
-        }
+        return frames;
+    } catch (error) {
+        console.error('Error loading frames:', error);
+        return [];
     }
 }
 
-// Navigation System
-class Navigation {
-    constructor() {
-        this.setupEventListeners();
-        this.handleInitialLoad();
+function startAnimation() {
+    if (animationInterval) clearInterval(animationInterval);
+    animationInterval = setInterval(() => {
+        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+        textarea.value = frames[currentFrameIndex];
+    }, 100);
+}
+
+function stopAnimation() {
+    if (animationInterval) {
+        clearInterval(animationInterval);
+        textarea.value = frames[13] || '';
     }
+}
 
-    setupEventListeners() {
-        // Browser navigation
-        window.addEventListener('popstate', () => {
-            const hash = location.hash.slice(1);
-            if (hash) this.loadContent(hash.replace(/-/g, ' '));
-        });
+// Handle mobile view changes
+window.addEventListener('resize', () => {
+    const newMobileView = checkMobileView();
+    
+    if (newMobileView !== isMobileView && frames.length > 0) {
+        isMobileView = newMobileView;
+        frames = isMobileView ? trimFramesForMobile(originalFrames) : [...originalFrames];
+        textarea.value = frames[currentFrameIndex];
+    }
+});
 
-        // Social dropdown
-        const socialsBtn = document.querySelector('.socials-button');
-        const dropdown = document.querySelector('.social-dropdown');
-        
-        if (socialsBtn && dropdown) {
-            socialsBtn.addEventListener('click', () => this.toggleSocials());
-            document.addEventListener('click', (e) => {
-                if (!socialsBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                    this.closeSocials();
+// Navigation Menu Functionality
+function toggleMenu(event) {
+    event.preventDefault();
+
+    const parentMenu = event.target.closest('.menu-item');
+    
+    if (parentMenu) {
+        const submenu = parentMenu.querySelector('.submenu');
+
+        if (submenu) {
+            const isExpanded = parentMenu.classList.contains('expanded');
+            parentMenu.classList.toggle('expanded');
+
+            const closeMenu = (e) => {
+                if (!parentMenu.contains(e.target)) {
+                    parentMenu.classList.remove('expanded');
+                    document.removeEventListener('click', closeMenu);
                 }
-            });
-        }
-    }
+            };
 
-    toggleMenu(menuItem, event) {
-        // Menu toggle
-        document.addEventListener('click', (e) => {
-            const menuItem = e.target.closest('.menu-item');
-            if (menuItem) this.toggleMenu(menuItem, e);
+            if (!isExpanded) {
+                setTimeout(() => {
+                    document.addEventListener('click', closeMenu);
+                }, 0);
+            }
+        }
+
+        // Close other expanded menus
+        document.querySelectorAll('.menu-item.expanded').forEach((item) => {
+            if (item !== parentMenu) {
+                item.classList.remove('expanded');
+            }
         });
-
-        event.preventDefault();
-        const submenu = menuItem.querySelector('.submenu');
-        if (!submenu) return;
-
-        // Close other menus
-        document.querySelectorAll('.menu-item.expanded')
-            .forEach(item => item !== menuItem && item.classList.remove('expanded'));
-
-        // Toggle current menu
-        const isExpanding = !menuItem.classList.contains('expanded');
-        menuItem.classList.toggle('expanded');
-
-        if (isExpanding) {
-            setTimeout(() => {
-                const closeOnOutsideClick = (e) => {
-                    if (!menuItem.contains(e.target)) {
-                        menuItem.classList.remove('expanded');
-                        document.removeEventListener('click', closeOnOutsideClick);
-                    }
-                };
-                document.addEventListener('click', closeOnOutsideClick);
-            }, 0);
-        }
-    }
-
-    toggleSocials() {
-        const chevron = document.querySelector('.chevron');
-        const dropdown = document.querySelector('.social-dropdown');
-        chevron?.classList.toggle('open');
-        dropdown?.classList.toggle('show');
-    }
-
-    closeSocials() {
-        const chevron = document.querySelector('.chevron');
-        const dropdown = document.querySelector('.social-dropdown');
-        chevron?.classList.remove('open');
-        dropdown?.classList.remove('show');
-    }
-
-    loadContent(contentKey) {
-        const contentDiv = document.getElementById('content');
-        const normalizedKey = contentKey.toLowerCase().replace(/\s+/g, '-');
-        const filePath = `page/${normalizedKey}.html`;
-        
-        history.pushState(null, '', `#${normalizedKey}`);
-        
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-                return response.text();
-            })
-            .then(html => {
-                contentDiv.innerHTML = html;
-                this.addNavigationBorder();
-            })
-            .catch(error => {
-                console.error(error);
-                contentDiv.innerHTML = `
-                    <div class="margin">
-                        <h2>Error</h2>
-                        <p>Could not load the content. Please try again later.</p>
-                    </div>`;
-                this.addNavigationBorder();
-            });
-    }
-
-    addNavigationBorder() {
-        document.querySelector('.navigation')?.classList.add('border');
-    }
-
-    handleInitialLoad() {
-        const hash = location.hash.slice(1);
-        if (hash) this.loadContent(hash.replace(/-/g, ' '));
     }
 }
+
+// Dynamic Content Loading
+function loadContent(contentKey) {
+    const contentDiv = document.getElementById('content');
+    const normalizedKey = contentKey.toLowerCase().replace(/\s+/g, '-');
+    const filePath = `page/${normalizedKey}.html`;
+    
+    history.pushState(null, '', `#${normalizedKey}`);
+    
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load content from ${filePath}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentDiv.innerHTML = html;
+            addNavigationBorder();
+        })
+        .catch(error => {
+            console.error(error);
+            contentDiv.innerHTML = `
+                <div class="margin">
+                    <h2>Error</h2>
+                    <p>Could not load the content. Please try again later.</p>
+                </div>`;
+            addNavigationBorder();
+        });
+}
+
+function addNavigationBorder() {
+    const navigationDiv = document.querySelector('.navigation');
+    if (navigationDiv) {
+        navigationDiv.classList.add('border');
+    }
+}
+
+// Browser navigation
+window.addEventListener('popstate', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+        loadContent(hash.replace(/-/g, ' '));
+    }
+});
 
 // Utility function
 function refreshPath() {
-    const path = location.pathname;
-    const hasIndex = path.endsWith('index.html');
-    const basePath = path.split('#')[0];
-    location.href = hasIndex ? basePath : basePath + 'index.html';
+    const currentPath = window.location.pathname;
+    const hasIndexHtml = currentPath.endsWith('index.html');
+    const basePath = currentPath.split('#')[0];
+    
+    if (hasIndexHtml) {
+        window.location.href = basePath;
+    } else {
+        window.location.href = basePath + 'index.html';
+    }
 }
 
-// Initialize everything when DOM is loaded
+// Page initialization
 window.addEventListener('load', () => {
     const contentDiv = document.getElementById('content');
-    const textarea = document.getElementById('ascii-art');
     
-    // Reset content and add textarea
+    // Check for initial hash and load content if present
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash) {
+        loadContent(initialHash.replace(/-/g, ' '));
+    }
+
+    // Initialize ASCII frames
+    loadFrames().then(loadedFrames => {
+        frames = loadedFrames;
+        if (frames.length > 0) {
+            textarea.value = frames[currentFrameIndex];
+            
+            // Add event listeners for animation on hover
+            textarea.addEventListener('mouseenter', startAnimation);
+            textarea.addEventListener('mouseleave', stopAnimation);
+        }
+    }).catch(error => {
+        console.error('Initialization error:', error);
+    });
+
+    // Reset and display ASCII textarea inside the content div
     contentDiv.innerHTML = '';
-    if (textarea) contentDiv.appendChild(textarea);
-    
-    // Initialize systems
-    new ASCIIAnimator();
-    new Navigation();
+    contentDiv.appendChild(textarea);
+});
+
+// Social dropdown functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const socialsBtn = document.querySelector('.socials-button');
+    const chevron = document.querySelector('.chevron');
+    const dropdown = document.querySelector('.social-dropdown');
+
+    if (socialsBtn && chevron && dropdown) {
+        socialsBtn.addEventListener('click', () => {
+            chevron.classList.toggle('open');
+            dropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!socialsBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                chevron.classList.remove('open');
+                dropdown.classList.remove('show');
+            }
+        });
+    }
 });
