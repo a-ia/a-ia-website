@@ -109,12 +109,12 @@ body {
 
 @media (min-width: 800px) {
   body {
-    zoom: 1.4;
+    zoom: 1.2;
   }
 
-  @supports not (zoom: 1.4) {
+  @supports not (zoom: 1.2) {
     body {
-      transform: scale(1.4);
+      transform: scale(1.2);
       transform-origin: top left;
     }
   }
