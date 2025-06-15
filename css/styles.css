@@ -961,7 +961,8 @@ p3:hover {
 }
 
 #rss-feed {
-  height: 105px;
+  margin-top: 5px;  
+  height: 100px;
   overflow-y: auto;
   scrollbar-width: none;
 }
