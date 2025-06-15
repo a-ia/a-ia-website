@@ -63,7 +63,7 @@
 
                                 <div class="item">
                                     <p3>
-                                          <button onclick="window.location.href='http://x.com/heroine2730/" class="glow"><p2 class="glow">Twitter</p2></button>
+                                          <button onclick="window.location.href='http://x.com/heroine2730/'" class="glow"><p2 class="glow">Twitter</p2></button>
                                     </p3>
                                 </div>
 
@@ -296,7 +296,7 @@
       document.getElementById('songlink').href = track.url;
       
       const playedTime = isNowPlaying
-        ? ''
+        ? 'Playing now'
         : `Played ${new Date(track.date.uts * 1000).toLocaleString()}`;
       document.getElementById('lastplayed').textContent = playedTime;
     } catch (err) {
