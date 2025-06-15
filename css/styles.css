@@ -708,6 +708,47 @@ iframe {
   border-color: white;
 }
 
+.widget-container {
+  grid-area: widget-container;
+  grid-row: 2;
+  scrollbar-width: 0px;
+  overflow: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px;
+  grid-template-areas: "last-fm x-widget";
+}
+
+
+.last-fm,
+.x-widget {
+  display: inline-block;
+  text-align: left;
+  padding: 5px;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px dashed;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.last-fm {
+  grid-area: last-fm;
+  position: relative;
+  border-radius: 5px;
+  border: 1px dashed;
+  box-sizing: border-box;
+}
+
+.x-widget {
+  grid-area: x-widget;
+  position: relative;
+  border-radius: 5px;
+  border: 1px dashed;
+  box-sizing: border-box;
+}
 
 /* ========================================= */
 /* ============= Footer Styles ============= */

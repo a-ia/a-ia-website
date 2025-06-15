@@ -14,6 +14,7 @@
                 <h1>Sharon's Lil' Corner</h1>
             </div>
 
+
             <div class="left-sidebar">
                 <div class="left-about">
                     <div class="left-sidebar-title">
@@ -57,6 +58,12 @@
                                 <div class="item">
                                     <p3>
                                         <button onclick="window.location.href='http://github.com/a-ia'" class="glow"><p2 class="glow">Github</p2></button>
+                                    </p3>
+                                </div>
+
+                                <div class="item">
+                                    <p3>
+                                          <button onclick="window.location.href='http://x.com/heroine2730/" class="glow"><p2 class="glow">Twitter</p2></button>
                                     </p3>
                                 </div>
 
@@ -184,7 +191,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="footer-container">
                 <div class="links gradient-box">
                         <h2 style="margin: 5px 5px 0 5px;">Quick Links</h2>
@@ -206,6 +212,33 @@
                         </span>
                     </div>
                 </div>
+
+
+<div class="widget-container">
+<div class="last-fm gradient-box">
+  <b id="currentlylistening">Last song:</b><br>
+  <a href="#" id="songlink" target="_blank" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+    <img src="" width="50" height="50" id="albumcover" style="object-fit: cover; border-radius: 4px;">
+    <div>
+      <span id="songname">Loading...</span><br>
+      <span id="artist"></span>
+    </div>
+  </a>
+  <span id="lastplayed" style="color:gray">Fetching...</span>
+</div>
+
+  <div class="x-widget gradient-box" style="display: flex; align-items: flex-start; gap: 10px;">
+  <img src="images/changeofheart.jpg" width="50" height="50" style="border-radius: 50%; position:relative; margin-top:5px;" id="tweet-profile-pic">
+  <div>
+    <div style="font-size: 15px; color: gray;">
+      <a href="https://x.com/heroine2730">@heroine2730</a> <span id="tweet-time"></span>
+    </div>
+    <div id="tweet-text" style="margin-top: 4px;">
+      Loading latest tweet...
+    </div>
+  </div>
+        </div>
+        </div>
 
                 <div class="projects gradient-box">
                   <h2>Projects</h2>
@@ -237,10 +270,76 @@
         <div id="gradient-bg" class="gradient-bg"></div>
         <script src="js/script.js"></script>
         <script src="rss/rss.js"></script>
-        <script src="js/blink.js"></script>
-        <script src="js/height.js"></script>
-        <script src="js/redirect.js"></script>
 
+    <script>
+  const username = 'heroine2730';
+  const apiKey = '1bd814c02b9d9eb626d94880353802b3';
+  const limit = 1;
+
+  async function updateNowPlaying() {
+    const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=${limit}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const track = data.recenttracks.track[0];
+      const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+
+      document.getElementById('currentlylistening').textContent = isNowPlaying ? 'Now playing:' : 'Last song:';
+      document.getElementById('songname').textContent = track.name || 'Unknown';
+      document.getElementById('artist').textContent = track.artist['#text'] || 'Unknown';
+      document.getElementById('albumcover').src = track.image[1]['#text'] || '';
+      document.getElementById('songlink').href = track.url;
+      
+      const playedTime = isNowPlaying
+        ? ''
+        : `Played ${new Date(track.date.uts * 1000).toLocaleString()}`;
+      document.getElementById('lastplayed').textContent = playedTime;
+    } catch (err) {
+      console.error('Error fetching song:', err);
+      document.getElementById('lastplayed').textContent = 'Could not load song.';
+    }
+  }
+
+  updateNowPlaying();
+  setInterval(updateNowPlaying, 30000); // refresh every 30s
+const feedUrl = 'https://rss.app/feeds/Obtw5fNKRy5NnDxQ.xml';
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+
+fetch(apiUrl)
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'ok' && data.items.length > 0) {
+      const tweet = data.items[0];
+      const rawDate = tweet.pubDate;
+      const parsedDate = new Date(Date.parse(rawDate));
+      const safeDate = isNaN(parsedDate) ? new Date() : parsedDate;
+
+      document.getElementById('tweet-text').textContent = tweet.title;
+      document.getElementById('tweet-time').textContent = formatDate(safeDate);
+    } else {
+      document.getElementById('tweet-text').textContent = 'No tweet found.';
+      document.getElementById('tweet-time').textContent = '';
+    }
+  })
+  .catch(err => {
+    console.error('Error loading tweet:', err);
+    document.getElementById('tweet-text').textContent = 'Error fetching tweet.';
+    document.getElementById('tweet-time').textContent = '';
+  });
+
+function formatDate(date) {
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+    month: 'short',
+    day: 'numeric',
+  };
+  return date.toLocaleString('en-US', options).replace(',', ' •');
+}
+</script>
     </body>
 </html>
 
