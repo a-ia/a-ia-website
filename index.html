@@ -219,7 +219,6 @@
 
 <div class="widget-container">
 <div class="last-fm gradient-box">
-  <b id="currentlylistening">Last song:</b><br>
   <a href="#" id="songlink" target="_blank" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
     <img src="" width="50" height="50" id="albumcover" style="object-fit: cover; border-radius: 4px;">
     <div>
@@ -289,15 +288,14 @@
       const track = data.recenttracks.track[0];
       const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
 
-      document.getElementById('currentlylistening').textContent = isNowPlaying ? 'Now playing:' : 'Last song:';
       document.getElementById('songname').textContent = track.name || 'Unknown';
       document.getElementById('artist').textContent = track.artist['#text'] || 'Unknown';
       document.getElementById('albumcover').src = track.image[1]['#text'] || '';
       document.getElementById('songlink').href = track.url;
       
       const playedTime = isNowPlaying
-        ? 'Playing now'
-        : `Played ${new Date(track.date.uts * 1000).toLocaleString()}`;
+        ? 'Playing Now'
+        : `Last Played ${new Date(track.date.uts * 1000).toLocaleString()}`;
       document.getElementById('lastplayed').textContent = playedTime;
     } catch (err) {
       console.error('Error fetching song:', err);
